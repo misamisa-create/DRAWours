@@ -25,7 +25,8 @@ UI Flows・ER図・テーブル定義書・詳細設計書は作成中です。
   
   ![個人開発](https://user-images.githubusercontent.com/83994010/131781220-df95ceba-4517-4515-86d3-4a044fd66ed9.jpg)
 
-
+ER図
+https://drive.google.com/file/d/11zBpWx9AzOD1dHfsjU3PoZWZili9zxcw/view?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1C4aNOJ7wpIt5g8li1dGds2h3jRXPEFJYhbmbrlApY8I/edit?usp=sharing
