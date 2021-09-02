@@ -19,8 +19,10 @@
 自分の絵の紹介をする時
 
 ## 設計書
-UI Flows・ER図・テーブル定義書は作成中です。
+UI Flows・ER図・テーブル定義書・詳細設計書は作成中です。
 フレームワーク(赤文字は現在作成中です。)
+  
+  
   ![個人開発](https://user-images.githubusercontent.com/83994010/131781220-df95ceba-4517-4515-86d3-4a044fd66ed9.jpg)
 
 
