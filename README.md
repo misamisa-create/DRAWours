@@ -20,14 +20,14 @@
 
 ## 設計書
 
-###ワイヤーフレーム
+### ワイヤーフレーム
 
 
-###ER図
+### ER図
 https://drive.google.com/file/d/11zBpWx9AzOD1dHfsjU3PoZWZili9zxcw/view?usp=sharing
 ###UI Flows
 https://drive.google.com/file/d/1PSzEaTl5JpjqF0OPOZeMFZREToQN-2lc/view?usp=sharing
-###テーブル設計
+### テーブル設計
 https://docs.google.com/spreadsheets/d/1X91gyZ0ATavxMYiEpWrpTONRY0Qct8zcHqchRpHLRYQ/edit?usp=sharing
 ### 詳細設計
 https://docs.google.com/spreadsheets/d/1c55ZuhmkPOUxsM5YeNmII2s0Tw7khC9ouYVI8sajpWI/edit?usp=sharing
