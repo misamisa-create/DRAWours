@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # 中間テーブルのアソシエーションを入れる
+  # アイコン・ヘッダーデフォルト画像を用意
 
   has_many :chat_room_users, dependent: :destroy
   has_many :chat_messages, dependent: :destroy
