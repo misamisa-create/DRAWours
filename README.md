@@ -1,5 +1,3 @@
-# README
-
 # <DRAWours>
 
 ## サイト概要
@@ -21,14 +19,19 @@
 自分の絵の紹介をする時
 
 ## 設計書
-UI Flows・ER図・テーブル定義書・詳細設計書は作成中です。
-フレームワークは以下のように考えています。チャット機能などはまだ考えられていません。(赤文字につきましても現在作成中です。)
+
+###ワイヤーフレーム
 
 
-  ![個人開発](https://user-images.githubusercontent.com/83994010/131781220-df95ceba-4517-4515-86d3-4a044fd66ed9.jpg)
-
-ER図
+###ER図
 https://drive.google.com/file/d/11zBpWx9AzOD1dHfsjU3PoZWZili9zxcw/view?usp=sharing
+###UI Flows
+https://drive.google.com/file/d/1PSzEaTl5JpjqF0OPOZeMFZREToQN-2lc/view?usp=sharing
+###テーブル設計
+https://docs.google.com/spreadsheets/d/1X91gyZ0ATavxMYiEpWrpTONRY0Qct8zcHqchRpHLRYQ/edit?usp=sharing
+### 詳細設計
+https://docs.google.com/spreadsheets/d/1c55ZuhmkPOUxsM5YeNmII2s0Tw7khC9ouYVI8sajpWI/edit?usp=sharing
+
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1C4aNOJ7wpIt5g8li1dGds2h3jRXPEFJYhbmbrlApY8I/edit?usp=sharing
