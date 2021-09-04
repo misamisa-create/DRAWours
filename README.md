@@ -21,7 +21,7 @@
 ## 設計書
 
 ### ワイヤーフレーム
-![DRAWoursワイヤーフレーム](https://user-images.githubusercontent.com/83994010/132082223-c0e021be-1d0b-4c49-a581-0e586264b1de.jpg)
+![DRAWours_ワイヤーフレーム](https://user-images.githubusercontent.com/83994010/132085220-eedab367-7cb3-4559-ba99-4ace01ca9803.jpg)
 
 
 ### ER図
