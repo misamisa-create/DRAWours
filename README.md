@@ -1,4 +1,4 @@
-# <DRAWours>
+# DRAWours
 
 ## サイト概要
 イラスト・絵画・立体・写真などの、制作をしている方用のSNSです。制作していない方も閲覧用として使用可能です。
@@ -25,7 +25,7 @@
 
 ### ER図
 https://drive.google.com/file/d/11zBpWx9AzOD1dHfsjU3PoZWZili9zxcw/view?usp=sharing
-###UI Flows
+### UI Flows
 https://drive.google.com/file/d/1PSzEaTl5JpjqF0OPOZeMFZREToQN-2lc/view?usp=sharing
 ### テーブル設計
 https://docs.google.com/spreadsheets/d/1X91gyZ0ATavxMYiEpWrpTONRY0Qct8zcHqchRpHLRYQ/edit?usp=sharing
