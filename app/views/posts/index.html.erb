@@ -1,0 +1,12 @@
+<h4>ままま</h4>
+
+<% @posts.each do |post| %>
+<div>
+  <%= image_tag post.image %>
+  <p>作品タイトル：<%= post.title %></p>
+  <p>本文：<%= post.text %></p>
+  <p>制作時間：<%= post.making_time %></p>
+  <p>画材や制作方法:<%= post.instrument %></p>
+  <p>ジャンル：<%= post.genre %></p>
+</div>
+<% end %>

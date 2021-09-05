@@ -1,0 +1,18 @@
+<h1>画像投稿フォーム</h1>
+<%= form_with model:@post, local:true do |f| %>
+
+  <h4>作品タイトル</h4>
+  <%= f.text_field :title %>
+  <h4>本文</h4>
+  <%= f.text_area :text %>
+  <h4>画像</h4>
+  <%= f.file_field :image %>
+  <h4>制作時間</h4>
+  <%= f.number_field :making_time %>時間
+  <h4>画材や制作方法</h4>
+  <%= f.text_field :instrument %>
+  <h4>ジャンル</h4>
+  <%= f.label :genre %>
+  <%= f.select :genre, ['イラスト', '写真', '立体'], {include_blank: '---'} %>
+  <%= f.submit '投稿' %>
+<% end %>
