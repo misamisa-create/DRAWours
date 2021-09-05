@@ -1,18 +1,44 @@
-<h1>画像投稿フォーム</h1>
-<%= form_with model:@post, local:true do |f| %>
+<div class="container">
+  <div class="row w-50 p-3 mx-auto">
+    <%= form_with model:@post, local:true do |f| %>
+    <div class="col border shadow-sm bg-light rounded-3 p-3">
+      <p class="text-center"><%= f.text_field :title,class:"form-control",placeholder:"タイトル" %></p>
+      <p class="text-center"><%= f.text_area :text,class:"form-control",placeholder:"本文" %></p>
+      <%= f.file_field :image %>
 
-  <h4>作品タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>本文</h4>
-  <%= f.text_area :text %>
-  <h4>画像</h4>
-  <%= f.file_field :image %>
-  <h4>制作時間</h4>
-  <%= f.number_field :making_time %>時間
-  <h4>画材や制作方法</h4>
-  <%= f.text_field :instrument %>
-  <h4>ジャンル</h4>
-  <%= f.label :genre %>
-  <%= f.select :genre, ['イラスト', '写真', '立体'], {include_blank: '---'} %>
-  <%= f.submit '投稿' %>
-<% end %>
+
+
+      <!--<div class="custom-file">-->
+      <!--  <input type="file" class="custom-file-input" id="validatedCustomFile" required>-->
+      <!--  <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>-->
+      <!--  <div class="invalid-feedback">Example invalid custom file feedback</div>-->
+      <!--</div>-->
+
+
+      <div class="row p-3">
+        <div class="col">
+          <label class="col-form-label">制作期間</label>
+        </div>
+        <div class="col">
+          <%= f.number_field :making_time,class:"form-control" %>
+        </div>
+        <div class="col">
+          <label class="col-form-label">時間</label>
+        </div>
+      </div>
+      <p class="text-center"><%= f.text_field :instrument,class:"form-control",placeholder:"使用画材・カメラの機種など" %></p>
+
+      <div class="row p-3">
+        <div class="col">
+          ジャンル
+        </div>
+        <div class="col">
+          <%= f.select :genre, ['イラスト', '写真', '立体'], {include_blank: '---'},class:"form-control" %>
+        </div>
+      </div>
+      <p><%= f.submit '投稿',class: "btn btn-secondary btn-lg btn-block rounded-pill" %></p>
+    </div>
+    <% end %>
+  </div>
+</div>
+

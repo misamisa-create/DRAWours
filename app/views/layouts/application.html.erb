@@ -13,22 +13,55 @@
   <body>
     <!--ヘッダー作成中-->
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-5">
+        <a class="navbar-brand">DRAWours</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--ナブバー中身-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <% if user_signed_in? %>
+
+              <li class="nav-item">
+                <%= link_to "logOUT",destroy_user_session_path,method: :delete, class: "nav-link" %>
+              </li>
+              <!--マイページ-->
+              <li class="nav-item">
+                <%= link_to "ourPOSTS",posts_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "newPOSTS",new_post_path, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "新規登録",new_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン",new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
+
+
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
       </nav>
+
     </header>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト",destroy_user_session_path,method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録",new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン",new_user_session_path %>
-      </li>
-    <% end %>
 
     <%= yield %>
+
+    <footer>
+      <nav class="navbar navbar-dark bg-dark p-5">
+        <span class="navbar-text m-auto">
+          ©︎misamisaportfolio
+        </span>
+      </nav>
+    </footer>
   </body>
 </html>

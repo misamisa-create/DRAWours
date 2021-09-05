@@ -16,3 +16,8 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.navbar-dark .navbar-toggler{
+  /* ハンバーガーメニュー */
+  border-color: rgba(255, 255, 225, 1);
+}
