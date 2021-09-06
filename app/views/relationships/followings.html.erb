@@ -1,0 +1,10 @@
+<h1>following users</h1>
+<% if @users.exists? %>
+  <% @users. each do |user| %>
+    <%= user.name %>
+    <%= user.followings.count %>
+    <%= user.followers.count %>
+  <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

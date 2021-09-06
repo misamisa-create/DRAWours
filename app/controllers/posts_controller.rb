@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
   def index
-
-    @posts = Post.all
-
+    # N+1問題を防ぐためのincludesメソッド
+    # あとでfavoriteなども追加していく
+    @posts_all = Post.includes(:user)
+    @user = User.find(current_user.id)
+    # フォローしているユーザーを取得
+    @follow_users = @user.followings
+    # フォローユーザの投稿を取得
+    @posts = @posts_all.where(user_id: @follow_users).order("created_at DESC")
   end
 
   def new
@@ -26,7 +31,7 @@ class PostsController < ApplicationController
 
   def destroy
   end
-  
+
   private
   def post_params
     params.require(:post).permit(:title,:text,:image,:making_time,:instrument,:genre)

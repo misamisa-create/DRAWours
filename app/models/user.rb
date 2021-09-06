@@ -6,7 +6,27 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # 中間テーブルのアソシエーションを入れる
+  # 自分がフォローされる側の関係性(被フォロー)
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # 自分がフォローする側の関係性(与フォロー)
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  # 被フォロー関係を通して自分をフォローしている人を参照
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+  # 与フォロー関係を通して自分がフォローしている人を参照
+  has_many :followings, through: :relationships, source: :followed
+
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
+
   # アイコン・ヘッダーデフォルト画像を用意
 
   has_many :chat_room_users, dependent: :destroy

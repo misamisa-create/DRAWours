@@ -1,16 +1,27 @@
 class RelationshipsController < ApplicationController
-  def destroy
-  end
+  before_action :authenticate_user!
 
   def create
+    current_user.follow(params[:user_id])
+    redirect_to request.referer
   end
 
-  # フォロワー一覧
-  def follower
+  def destroy
+    current_user.unfollow(params[:user_id])
+    redirect_to request.referer
   end
 
-  # フォロー一覧
-  def followed
+  def followings
+     user = User.find(params[:user_id])
+     @users = user.followings
   end
+
+  def followers
+     user = User.find(params[:user_id])
+     @users = user.followers
+  end
+
+
+
 
 end
