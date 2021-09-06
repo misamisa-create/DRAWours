@@ -5,9 +5,12 @@ class PostsController < ApplicationController
     @posts_all = Post.includes(:user)
     @user = User.find(current_user.id)
     # フォローしているユーザーを取得
-    @follow_users = @user.followings
+    follow_users = current_user.followings
+    # 自分の投稿も表示されるようにする
+    follow_users.push(@current_user)
     # フォローユーザの投稿を取得
-    @posts = @posts_all.where(user_id: @follow_users).order("created_at DESC")
+    @posts = @posts_all.where(user_id: follow_users).order("created_at DESC")
+
   end
 
   def new
