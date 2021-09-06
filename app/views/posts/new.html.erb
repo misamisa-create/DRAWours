@@ -1,14 +1,11 @@
 <div class="container">
-  <div class="row w-50 p-3 mx-auto">
+  <div class="row p-5 mx-auto" style="width: 540px;">
     <%= form_with model:@post, local:true do |f| %>
-    <div class="col border shadow-sm bg-light rounded-3 p-3">
+    <div class="col-sm-12 border shadow-sm bg-light rounded-3 p-3">
       <p><%= f.submit '投稿',class: "btn btn-secondary btn-lg btn-block rounded-pill" %></p>
       <p class="text-center"><%= f.text_field :title,class:"form-control",placeholder:"タイトル" %></p>
       <p class="text-center"><%= f.text_area :text,class:"form-control",placeholder:"本文" %></p>
       <%= f.file_field :image %>
-
-
-
       <!--<div class="custom-file">-->
       <!--  <input type="file" class="custom-file-input" id="validatedCustomFile" required>-->
       <!--  <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>-->
