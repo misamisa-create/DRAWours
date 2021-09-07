@@ -7,8 +7,8 @@
   <%= link_to "フォロワー一覧",user_followers_path(@user) %><br />
   <%= @user.name %><br />
   <%= @user.display_name %><br />
+  <!--円形の指定はCSS-->
   <%= image_tag @user.icon_image,class:"icon-image" %><br />
-
   <%= image_tag @user.header_image,class:"w-50 rounded" %><br />
   <%= @user.introduction %><br />
   <%= @user.url %>
