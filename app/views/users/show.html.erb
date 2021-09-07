@@ -1,15 +1,19 @@
 <h2>マイページ</h2>
 <!--ユーザ登録情報-->
 <!--フォローボタン-->
-<%= render "relationships/info", user: @user %>
-<%= link_to "フォロー一覧",user_followings_path(@user) %>
-<%= link_to "フォロワー一覧",user_followers_path(@user) %><br />
-<%= @user.name %><br />
-<%= @user.display_name %><br />
-<%= image_tag @user.icon_image,class:"w-50 rounded" %><br />
-<%= image_tag @user.header_image,class:"w-50 rounded" %><br />
-<%= @user.introduction %><br />
-<%= @user.url %>
+<div class="container">
+  <%= render "relationships/info", user: @user %>
+  <%= link_to "フォロー一覧",user_followings_path(@user) %>
+  <%= link_to "フォロワー一覧",user_followers_path(@user) %><br />
+  <%= @user.name %><br />
+  <%= @user.display_name %><br />
+  <%= image_tag @user.icon_image,class:"icon-image" %><br />
+
+  <%= image_tag @user.header_image,class:"w-50 rounded" %><br />
+  <%= @user.introduction %><br />
+  <%= @user.url %>
+</div>
+
 
 <!--自分の投稿一覧-->
 <div class="container">
