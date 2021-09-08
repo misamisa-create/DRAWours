@@ -5,11 +5,15 @@ class PostsController < ApplicationController
     @posts_all = Post.includes(:user)
     @user = User.find(current_user.id)
     # フォローしているユーザーを取得
-    follow_users = current_user.followings
-    # 自分の投稿も表示されるようにする
-    follow_users.push(@current_user)
+    follow_users = @user.followings
+    # follow_users = [@user.followings, @user]
+    # 自分の投稿も表示されるようになるが、今後userに自分が含まれてしまうので絶対にやらない！
+    # follow_users.push(@current_user)
     # フォローユーザの投稿を取得
     @posts = @posts_all.where(user_id: follow_users).order("created_at DESC")
+    # @posts = @posts_all.where(user_id: [follow_users,@user]).order("created_at DESC")
+    # @posts = @posts_all.where(user_id: [follow_users]).order("created_at DESC")
+
 
   end
 
@@ -28,7 +32,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    
+
   end
 
   def update

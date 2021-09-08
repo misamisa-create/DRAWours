@@ -16,12 +16,18 @@
             <%= image_tag post.image,class:"w-100 rounded" %>
           </div>
         <% end %>
+
         <div class="offset-md-10 col-2 p-2 bg-secondary text-white-50 rounded-lg text-center mb-3"><%= post.genre %></div>
+
+
+
         <div class="row d-flex align-items-center" style="height:120px;">
+          <div class="col-sm-3">
           <%= link_to user_path(post.user) do %>
-            <%= image_tag post.user.icon_image,class:"icon-image mr-4"%>
+            <%= image_tag post.user.icon_image,class:"icon-image"%>
           <% end %>
-          <p><%= post.text %></p>
+          </div>
+          <div class="col-sm-9"><%= post.text %></div>
         </div>
 
       </div>
