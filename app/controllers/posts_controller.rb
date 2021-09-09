@@ -4,7 +4,6 @@ class PostsController < ApplicationController
     # あとでfavoriteなども追加していく
     @posts_all = Post.includes(:user)
     @user = User.find(current_user.id)
-
     # pp @user.followings
     # フォローしているユーザーのidを取得
     follow_users_ids = @user.followings.pluck(:id)
@@ -14,8 +13,6 @@ class PostsController < ApplicationController
     follow_users_ids.push(current_user.id)
     # フォローユーザの投稿を取得
     @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
-
-
   end
 
   def new
@@ -40,6 +37,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.user == current_user
+      @post.destroy
+      redirect_to posts_path
+    end
   end
 
   private

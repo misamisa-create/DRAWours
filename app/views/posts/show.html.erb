@@ -31,6 +31,10 @@
           </div>
         <p>コメントする</p>
         <p>コメント</p>
+
+        <% if @post.user == current_user %>
+          <%= link_to "削除",post_path(@post),method: :delete %>
+        <% end %>
       </div>
 
     </div>

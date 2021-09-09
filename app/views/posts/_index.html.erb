@@ -29,6 +29,9 @@
           </div>
           <div class="col-sm-9"><%= post.text %></div>
         </div>
+        <% if post.user == current_user %>
+          <%= link_to "削除",post_path(post),method: :delete %>
+        <% end %>
 
       </div>
       <% end %>
