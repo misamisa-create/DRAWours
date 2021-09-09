@@ -4,15 +4,16 @@ class PostsController < ApplicationController
     # あとでfavoriteなども追加していく
     @posts_all = Post.includes(:user)
     @user = User.find(current_user.id)
-    # フォローしているユーザーを取得
-    follow_users = @user.followings
-    # follow_users = [@user.followings, @user]
-    # 自分の投稿も表示されるようになるが、今後userに自分が含まれてしまうので絶対にやらない！
-    # follow_users.push(@current_user)
+
+    # pp @user.followings
+    # フォローしているユーザーのidを取得
+    follow_users_ids = @user.followings.pluck(:id)
+    # pp follow_users_ids
+    # current_userのidをpush
+    # idにしないとcurrent_userがデータごとfollow_userに入ってしまうので注意！
+    follow_users_ids.push(current_user.id)
     # フォローユーザの投稿を取得
-    @posts = @posts_all.where(user_id: follow_users).order("created_at DESC")
-    # @posts = @posts_all.where(user_id: [follow_users,@user]).order("created_at DESC")
-    # @posts = @posts_all.where(user_id: [follow_users]).order("created_at DESC")
+    @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
 
 
   end
