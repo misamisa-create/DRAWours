@@ -8,7 +8,10 @@
     <%= @user.name %><br />
     <%= @user.display_name %><br />
     <%= @user.introduction %><br />
-    <%= @user.url %>
+    <%= @user.url %><br />
+    <% if @user == current_user %>
+      <%= link_to "編集する",edit_user_path(@user) %>
+    <% end %>
   </div>
 </div>
 

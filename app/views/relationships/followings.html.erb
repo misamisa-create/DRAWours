@@ -2,8 +2,8 @@
 <% if @users.exists? %>
   <% @users. each do |user| %>
     <%= user.name %>
-    <%= user.followings.count %>
-    <%= user.followers.count %>
+    フォロー数<%= user.followings.count %>人
+    フォロワー数<%= user.followers.count %>人<br />
   <% end %>
 <% else %>
   <p>ユーザーはいません</p>
