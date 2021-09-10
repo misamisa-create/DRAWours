@@ -51,6 +51,8 @@
         <% if @post.user == current_user %>
           <%= link_to "削除",post_path(@post),method: :delete %>
         <% end %>
+
+        <%= render "posts/favorite", post: @post %>
       </div>
 
     </div>

@@ -33,6 +33,8 @@
           <%= link_to "削除",post_path(post),method: :delete %>
         <% end %>
 
+        <%= render "posts/favorite", post: post %>
+
       </div>
       <% end %>
     </div>
