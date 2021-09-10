@@ -21,16 +21,32 @@
         <div class="row d-flex align-items-center mb-3" style="height:120px;">
           <div class="col-sm-3">
           <%= link_to user_path(@post.user) do %>
-          <!--%= image_tag @post.user.icon_image,class:"icon-image" %>-->
-            <%= image_tag @post.user.icon_image,class:"icon-image" %>
+            <!--%= image_tag @post.user.icon_image,class:"icon-image" %>-->
+            <%= image_tag @post.user.icon_image.variant(resize: "120x120"),class:"rounded-circle",style:"width: 120px; height: 120px; object-fit: cover" %>
           <% end %>
           </div>
-        <div class="col-sm-9"><%= @post.text %></div>
+          <div class="col-sm-9"><%= @post.text %></div>
+        </div>
+
+        <!--コメント-->
+        <div>
+        <p>コメント件数：<%= @post.comments.count %></p>
+        <% @post.comments.each do |comment| %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %>
+          <%= image_tag comment.user.icon_image.variant(resize: "50x50"),class:"rounded-circle",style:"width: 50px; height: 50px; object-fit: cover" %>
+          <!--%= image_tag comment.user.icon_image,class:"icon-image" %>-->
+          <%= comment.user.name %>
+          <%= comment.text %><br />
+        <% end %>
+        </div>
+        <div>
+        <%= form_with(model:[@post, @comment], local: true) do |f| %>
+          <%= f.text_area :text, rows:'5',placeholder: "コメントをここに" %>
+          <%= f.submit "コメントする" %>
+        <% end %>
+        </div>
 
 
-          </div>
-        <p>コメントする</p>
-        <p>コメント</p>
 
         <% if @post.user == current_user %>
           <%= link_to "削除",post_path(@post),method: :delete %>

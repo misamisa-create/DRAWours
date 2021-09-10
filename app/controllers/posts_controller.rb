@@ -13,6 +13,8 @@ class PostsController < ApplicationController
     follow_users_ids.push(current_user.id)
     # フォローユーザの投稿を取得
     @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
+
+
   end
 
   def new
@@ -30,6 +32,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # コメント機能
+    @comment = Comment.new
 
   end
 
