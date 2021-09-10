@@ -8,6 +8,10 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   validate :image_type
+  # user_idがfavoritesテーブルに存在するか
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
   private
 
