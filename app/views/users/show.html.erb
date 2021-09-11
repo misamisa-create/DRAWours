@@ -1,8 +1,18 @@
 <div class="card mw-100">
-  <%= image_tag @user.header_image,class:"header-image" %>
+  <% if @user.header_image.attached? %>
+    <%= image_tag @user.header_image,class:"header-image" %>
+  <% else %>
+   <%= image_tag 'img/no_image2.jpg',class:"header-image" %>
+  <% end %>
   <div class="card-img-overlay">
     <!--%= image_tag @user.icon_image,class:"icon-image-lg" %><br />-->
-    <%= image_tag @user.icon_image.variant(resize: "400x400"),class:"rounded-circle",style:"width: 400px; height: 400px; object-fit: cover" %><br />
+
+
+    <% if @user.icon_image.attached? %>
+      <%= image_tag @user.icon_image.variant(resize: "400x400"),class:"rounded-circle",style:"width: 400px; height: 400px; object-fit: cover" %><br />
+    <% else %>
+     <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "400x400"  %><br />
+    <% end %>
     <%= render "relationships/info", user: @user %>
     <%= link_to "フォロー一覧",user_followings_path(@user) %>
     <%= link_to "フォロワー一覧",user_followers_path(@user) %><br />

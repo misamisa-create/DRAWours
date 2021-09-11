@@ -24,7 +24,13 @@
           <div class="col-sm-3">
           <%= link_to user_path(post.user) do %>
             <!--CSSと併用すると%= image_tag post.user.icon_image,class:"icon-image"%>-->
-            <%= image_tag post.user.icon_image.variant(resize: "120x120"),class:"rounded-circle",style:"width: 120px; height: 120px; object-fit: cover" %>
+            <% if post.user.icon_image.attached? %>
+              <%= image_tag post.user.icon_image.variant(resize: "120x120"),class:"rounded-circle",style:"width: 120px; height: 120px; object-fit: cover" %>
+            <% else %>
+             <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "120x120" %><br />
+            <% end %>
+
+
           <% end %>
           </div>
           <div class="col-sm-9"><%= post.text %></div>
