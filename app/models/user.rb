@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   # 与フォロー関係を通して自分がフォローしている人を参照
   has_many :followings, through: :relationships, source: :followed
-  
+
 
   def follow(user_id)
     relationships.create(followed_id: user_id)
@@ -36,20 +36,20 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validate :image_type
+  # これを追加すると画像アップロードがnilの時エラーがでてしまう
+  # validate :image_type
+  # private
 
-  private
-
-  def image_type
-    if !icon_image.blob.content_type.in?(%('icon_image/jpeg icon_image/png'))
-      icon_image.purge # Rails6では、この1行は必要ない
-      errors.add(:icon_image, 'はJPEG/PNG形式を選択してアップロードしてください')
-    end
-    if !header_image.blob.content_type.in?(%('header_image/jpeg header_image/png'))
-      header_image.purge # Rails6では、この1行は必要ない
-      errors.add(:header_image, 'はJPEG/PNG形式を選択してアップロードしてください')
-    end
-  end
+  # def image_type
+  #   if !icon_image.blob.content_type.in?(%('icon_image/jpeg icon_image/png'))
+  #     icon_image.purge # Rails6では、この1行は必要ない
+  #     errors.add(:icon_image, 'はJPEG/PNG形式を選択してアップロードしてください')
+  #   end
+  #   if !header_image.blob.content_type.in?(%('header_image/jpeg header_image/png'))
+  #     header_image.purge # Rails6では、この1行は必要ない
+  #     errors.add(:header_image, 'はJPEG/PNG形式を選択してアップロードしてください')
+  #   end
+  # end
 
 
 end
