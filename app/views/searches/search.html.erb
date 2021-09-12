@@ -1,7 +1,6 @@
 <% if @model == 'user' %>
   <h3><%= @content %></h3>
   <%= render 'users/index', users:@records %>
-
 <% else @model == 'post' %>
   <h3><%= @content %></h3>
   <%= render 'posts/index', posts:@records %>
