@@ -3,30 +3,33 @@ class ChatsController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    chat_rooms = current_user.user_rooms.pluck(:chat_room_id)
-    user_rooms = UserRoom.find_by(user_id: @user.id, chat_room_id: chat_rooms)
+    rooms = current_user.user_rooms.pluck(:room_id)
+    user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
 
     unless user_rooms.nil?
-      @chat_room = user_rooms.chat_room
+      @room = user_rooms.room
     else
-      @chat_room = ChatRoom.new
-      @chat_room.save
-      UserRoom.create(user_id: current_user.id, chat_room_id: @chat_room.id)
-      UserRoom.create(user_id: @user.id, chat_room_id: @chat_room.id)
+      @room = Room.new
+      @room.save
+      UserRoom.create(user_id: current_user.id, room_id: @room.id)
+      UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
-    @chat_messages = @chat_room.chat_messages
-    @chat_message = ChatMessage.new(chat_room_id: @chat_room.id)
-
+    @chats = @room.chats
+    @chat = Chat.new(room_id: @room.id)
   end
 
+
   def create
-    @chat_messages = current_user.chat_messages.new(chat_message_params)
-    @chat_messages.save
+    @chat = current_user.chats.new(chat_params)
+    @chat.save
+    # logger.debug @chat.errors.inspect
+    # redirect_to chat_path(@user.id)
+
   end
 
   private
-  def chat_message_params
-    params.require(:chat_message).permit(:message,:chat_room_id)
+  def chat_params
+    params.require(:chat).permit(:message, :room_id)
   end
 
   def follow_each_other
@@ -35,7 +38,4 @@ class ChatsController < ApplicationController
       redirect_to posts_path
     end
   end
-
-
-
 end

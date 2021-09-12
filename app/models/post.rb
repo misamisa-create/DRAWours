@@ -1,6 +1,4 @@
 class Post < ApplicationRecord
-
-
   # 一旦外部キーのnilを許可
   belongs_to :user
   has_many :comments, dependent: :destroy

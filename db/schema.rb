@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_11_081517) do
+ActiveRecord::Schema.define(version: 2021_09_11_135415) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,15 +33,10 @@ ActiveRecord::Schema.define(version: 2021_09_11_081517) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "chat_messages", force: :cascade do |t|
+  create_table "chats", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "chat_room_id", null: false
+    t.integer "room_id", null: false
     t.text "message", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "chat_rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,9 +74,14 @@ ActiveRecord::Schema.define(version: 2021_09_11_081517) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_rooms", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "chat_room_id", null: false
+    t.integer "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

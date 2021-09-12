@@ -7,9 +7,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :user_rooms
-  has_many :chat_messages
+  has_many :chats
   # 注意
-  has_many :chat_rooms, through: :user_rooms
+  # has_many :rooms, through: :user_rooms
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
