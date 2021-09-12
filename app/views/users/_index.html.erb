@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-12 text-center mx-auto">
+      <% users.each do |user| %>
+      <div class="m-3">
+        <%= link_to user_path(user) do %>
+          <% if user.icon_image.attached? %>
+            <%= image_tag user.icon_image.variant(resize: "50x50"),class:"rounded-circle",style:"width: 50px; height: 50px; object-fit: cover" %>
+            <%= user.name %>
+          <% else %>
+            <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "50x50" %>
+            <%= user.name %>
+          <% end %>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

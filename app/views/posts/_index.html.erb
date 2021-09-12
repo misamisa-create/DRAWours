@@ -16,7 +16,6 @@
             <%= image_tag post.image,class:"w-100 rounded" %>
           </div>
         <% end %>
-
         <div class="offset-md-10 col-2 p-2 bg-secondary text-white-50 rounded-lg text-center mb-3"><%= post.genre %></div>
         <div><%= link_to "#{post.comments.count} コメント", post_path(post) %></div>
 
@@ -36,11 +35,10 @@
         <% if post.user == current_user %>
           <%= link_to "削除",post_path(post),method: :delete %>
         <% end %>
-
         <%= render "posts/favorite", post: post %>
-
       </div>
       <% end %>
     </div>
   </div>
 </div>
+
