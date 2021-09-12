@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row m-5 w-50 mx-auto">
+    <div class="col-sm-12">
+      <div class="w-50 p-4 bg-light rounded-pill mx-auto text-center"><%= @user.name %>さんとのチャット</div>
+
+      <% @chats.each do |chat| %>
+        <% if chat.user_id == current_user.id %>
+          <div class="text-right">
+            <%= chat.message %>
+            <%= link_to user_path(current_user) do %>
+              <% if current_user.icon_image.attached? %>
+                <%= image_tag current_user.icon_image.variant(resize: "70x70"),class:"rounded-circle",style:"width: 70px; height: 70px; object-fit: cover" %>
+              <% else %>
+                <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "70x70" %><br />
+              <% end %>
+            <% end %>
+          </div>
+        <% else %>
+        <div>
+          <%= link_to user_path(@user) do %>
+            <% if @user.icon_image.attached? %>
+              <%= image_tag @user.icon_image.variant(resize: "70x70"),class:"rounded-circle",style:"width: 70px; height: 70px; object-fit: cover" %>
+            <% else %>
+              <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "70x70" %><br />
+            <% end %>
+          <% end %>
+          <%= chat.message %>
+        </div>
+        <% end %>
+      <% end %>
+
+
+      <!--chat入力欄-->
+      <%= form_with model: @chat,remote:true do |f| %>
+        <%= f.text_field :message %>
+        <%= f.hidden_field :room_id %>
+      <%= f.submit "チャット"%>
+      <% end %>
+
+
+    </div>
+  </div>
+</div>
+
+
+

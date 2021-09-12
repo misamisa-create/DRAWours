@@ -6,6 +6,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :user_rooms
+  has_many :chats
+  # 注意
+  # has_many :rooms, through: :user_rooms
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
   # 自分がフォローされる側の関係性(被フォロー)
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # 自分がフォローする側の関係性(与フォロー)
@@ -30,11 +38,7 @@ class User < ApplicationRecord
 
   # アイコン・ヘッダーデフォルト画像を用意
 
-  has_many :chat_room_users, dependent: :destroy
-  has_many :chat_messages, dependent: :destroy
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+
 
   # これを追加すると画像アップロードがnilの時エラーがでてしまう
   # validate :image_type
