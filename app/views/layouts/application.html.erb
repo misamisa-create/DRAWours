@@ -4,6 +4,7 @@
     <title>DRAWours</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -45,25 +46,20 @@
                 <%= link_to "ログイン",new_user_session_path, class: "nav-link" %>
               </li>
             <% end %>
-
-
           </ul>
-          <!--<form class="form-inline my-2 my-lg-0">-->
-          <!--  %= form_tag(search_path,:method => 'get') do %>-->
-          <!--    %= text_field_tag "search", nil, placeholder: 'Search', class:"form-control mr-sm-2" %>-->
-          <!--    %= submit_tag 'Search', :name => nil,class:"btn btn-outline-light my-2 my-sm-0" %>-->
-          <!--  % end %>-->
-          <!--</form>-->
-
-
-
-<%= form_tag(searches_path,method: :get) do %>
-  <%= text_field_tag 'content' %>
-  <%= select_tag 'model',options_for_select({"User"=>"user","Post"=>"post"})%>
-  <%= select_tag 'method',options_for_select({"前方一致"=>"forward_match","後方一致"=>"backward_match","完全一致"=>"perfect","部分一致"=>"partial" })%>
-  <%= submit_tag '検索' %>
-<% end %>
-
+          <button type="button" class="btn btn-secondary mr-2" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-search" ></i>
+          </button>
+          <div class="collapse" id="collapseExample">
+            <div class="form-inline my-2 my-sm-0">
+              <%= form_tag(searches_path,:method => 'get') do %>
+                <%= text_field_tag "content", nil, placeholder: 'Search', class:"form-control" %>
+                <%= select_tag 'model',options_for_select({"制作者"=>"user","タイトル"=>"post"}), class:"form-control"%>
+                <%= select_tag 'method',options_for_select({"前方一致"=>"forward_match","後方一致"=>"backward_match","完全一致"=>"perfect","部分一致"=>"partial" }), class:"form-control"%>
+                <%= submit_tag 'Search', :name => nil,class:"btn btn-outline-light my-2 my-sm-0" %>
+              <% end %>
+            </div>
+          </div>
 
         </div>
       </nav>
