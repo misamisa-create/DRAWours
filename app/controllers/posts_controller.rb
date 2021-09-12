@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
 
 
+
   end
 
   def new
@@ -45,7 +46,7 @@ class PostsController < ApplicationController
     end
   end
 
-  
+
 
   private
   def post_params
