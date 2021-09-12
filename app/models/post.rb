@@ -13,6 +13,7 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+
   private
 
   def image_type
@@ -21,4 +22,6 @@ class Post < ApplicationRecord
       errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
     end
   end
+
+
 end
