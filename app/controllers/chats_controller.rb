@@ -22,8 +22,8 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
-    # logger.debug @chat.errors.inspect
-    # redirect_to chat_path(@user.id)
+
+    redirect_to request.referer
 
   end
 
