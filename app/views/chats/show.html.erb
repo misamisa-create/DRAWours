@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row m-5 w-75 mx-auto">
     <div class="col-sm-12">
@@ -29,12 +30,9 @@
         <% end %>
       <% end %>
 
-
       <!--chat入力欄-->
-      <%= form_with model: @chat,remote:true do |f| %>
-        <%= f.text_field :message,class:"form-control", placeholder: 'チャット記入欄' %>
-        <%= f.hidden_field :room_id %>
-      <% end %>
+      <%= render 'chats/new', chat: @chat %>
+
 
     </div>
   </div>

@@ -75,4 +75,5 @@ group :production do
 end
 
 gem 'jquery-rails'
+gem 'activestorage-validator'
 

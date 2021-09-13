@@ -1,3 +1,5 @@
+<%= render 'layouts/error_messages', model: @post %>
+
 <div class="container">
   <div class="row p-5 mx-auto" style="width: 540px;">
     <%= form_with model:@post, local:true do |f| %>
@@ -13,10 +15,10 @@
           <label class="col-form-label">制作期間</label>
         </div>
         <div class="col">
-          <%= f.number_field :making_time,class:"form-control" %>
+          <%= f.number_field :making_time, min: 0, max: 99, class:"form-control" %>
         </div>
         <div class="col">
-          <label class="col-form-label">時間</label>
+          <label class="col-form-label">日</label>
         </div>
       </div>
       <p class="text-center"><%= f.text_field :instrument,class:"form-control",placeholder:"使用画材・カメラの機種など" %></p>
