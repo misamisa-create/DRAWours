@@ -22,7 +22,6 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
-
     redirect_to request.referer
 
   end
@@ -35,7 +34,7 @@ class ChatsController < ApplicationController
   def follow_each_other
     user = User.find(params[:id])
     unless current_user.following?(user) && user.following?(current_user)
-      redirect_to posts_path
+      redirect_to user_path(user)
     end
   end
 end
