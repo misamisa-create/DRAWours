@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def index
     # N+1問題を防ぐためのincludesメソッド
     # あとでfavoriteなども追加していく
@@ -27,8 +28,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def show
