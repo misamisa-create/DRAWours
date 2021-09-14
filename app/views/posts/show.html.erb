@@ -13,8 +13,11 @@
         <div class="mt-3 mb-3">
           <%= image_tag @post.image,class:"w-100 rounded" %>
         </div>
+        <div>
+          <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t), class: "label label-default" }.join(' ')) %>
+        </div>
 
-        <div class="offset-md-10 col-2 p-2 bg-secondary text-white-50 rounded-lg text-center mb-3"><%= @post.genre %></div>
+        <!--<div class="offset-md-10 col-2 p-2 bg-secondary text-white-50 rounded-lg text-center mb-3">%= @post.genre %></div>-->
 
 
 
