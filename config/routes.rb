@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   resources :chats, only: [:show,:create]
 
   get '/searches' => 'searches#search'
+  # タグ検索
+  get 'tags/:tag', to: 'posts#index', as: :tag
 
 end

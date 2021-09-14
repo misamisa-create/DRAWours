@@ -20,6 +20,11 @@
         </div>
       </div>
       <p class="text-center"><%= f.text_field :instrument,class:"form-control",placeholder:"使用画材・カメラの機種など" %></p>
+      <!--タグ選択フォーム-->
+      <% @tags.each do |tag| %>
+        <%= f.check_box :tag_list,{multiple:true},"#{tag.name}", nil %>
+        <%= f.label " #{tag.name}(#{tag.taggings_count})",class: "label label-default" %>
+      <% end %>
 
       <div class="row p-3">
         <div class="col">
