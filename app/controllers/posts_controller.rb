@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
     @tags = ActsAsTaggableOn::Tag.all
 
@@ -37,10 +36,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-<<<<<<< HEAD
-=======
       @tags = ActsAsTaggableOn::Tag.all
->>>>>>> origin/develop
       render :new
     end
   end

@@ -253,11 +253,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
-  activestorage-validator
-=======
   acts-as-taggable-on (~> 6.0)
->>>>>>> origin/develop
+  activestorage-validator
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.5)
   byebug

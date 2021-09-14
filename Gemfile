@@ -75,9 +75,6 @@ group :production do
 end
 
 gem 'jquery-rails'
-<<<<<<< HEAD
 gem 'activestorage-validator'
 
-=======
 gem 'acts-as-taggable-on', '~> 6.0'
->>>>>>> origin/develop
