@@ -43,15 +43,26 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 200 }
 
   # ひとまずアイコンのバリデーションはできたが、ヘッダーはどう記述すればよいのか？
-  validate :icon_image_type, if: :was_attached?
+  validate :icon_image_type, if: :attached_icon_image?
+  validate :header_image_type, if: :attached_header_image?
+
 
   def icon_image_type
     extension = ['image/png', 'image/jpg', 'image/jpeg']
-    errors.add(:image, "の拡張子が間違っています") unless icon_image.content_type.in?(extension)
+    errors.add(:icon_image, "の拡張子が間違っています") unless icon_image.content_type.in?(extension)
   end
 
-  def was_attached?
+  def attached_icon_image?
     self.icon_image.attached?
+  end
+
+  def header_image_type
+    extension = ['image/png', 'image/jpg', 'image/jpeg']
+    errors.add(:header_image, "の拡張子が間違っています") unless header_image.content_type.in?(extension)
+  end
+
+  def attached_header_image?
+    self.header_image.attached?
   end
 
 end

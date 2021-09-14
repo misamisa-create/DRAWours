@@ -24,7 +24,7 @@ class ChatsController < ApplicationController
     if @chat.save
       redirect_to request.referer
     else
-      render :show
+      redirect_to request.referer
     end
 
   end
