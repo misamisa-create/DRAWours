@@ -45,13 +45,13 @@ class PostsController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.all
     # コメント機能
     @comment = Comment.new
-
     if params[:tag]
       # フォローユーザの投稿を取得
       @post = Post.find(params[:id]).tagged_with(params[:tag])
     else
       @post = Post.find(params[:id])
     end
+    @comments = @post.comments.order(created_at: :desc)
 
   end
 

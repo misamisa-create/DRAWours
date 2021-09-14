@@ -37,16 +37,18 @@
           <div class="col-sm-9"><%= @post.text %></div>
         </div>
 
-        <!--コメント-->
-        <div>
-          <%= render "comments/index", post: @post %>
+        <!--コメント一覧-->
+        <p>コメント件数：<%= @post.comments.count %></p>
+        <div class="comment-create">
+          <!--このdiv内をAjaxに置き換える-->
+          <div id = "comments_area">
+            <%= render "comments/index", post: @post %>
+          </div>
         </div>
 
-        <div>
-        <%= form_with(model:[@post, @comment], local: true) do |f| %>
-          <%= f.text_area :text, rows:'5',placeholder: "コメントをここに" %>
-          <%= f.submit "コメントする" %>
-        <% end %>
+        <!--新規コメント-->
+        <div class="comment-create">
+          <%= render "comments/form", post: @post, comment: @comment %>
         </div>
 
         <% if @post.user == current_user %>
