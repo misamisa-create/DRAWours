@@ -1,19 +1,19 @@
 class User < ApplicationRecord
+  # activerecord導入のためのメソッド
   has_one_attached :icon_image
   has_one_attached :header_image
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable
 
+  # アソシエーションはこちら
   has_many :user_rooms
   has_many :chats
-  # 注意
-  # has_many :rooms, through: :user_rooms
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
   # 自分がフォローされる側の関係性(被フォロー)
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # 自分がフォローする側の関係性(与フォロー)
@@ -36,24 +36,22 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  # アイコン・ヘッダーデフォルト画像を用意
+  validates :email, presence: true
+  validates :password, presence: true,length: { minimum: 6 }
+  validates :name, presence: true,length: { in: 1..50 }
+  validates :display_name, presence: true,length: { in: 1..50 }
+  validates :introduction, length: { maximum: 200 }
 
+  # ひとまずアイコンのバリデーションはできたが、ヘッダーはどう記述すればよいのか？
+  validate :icon_image_type, if: :was_attached?
 
+  def icon_image_type
+    extension = ['image/png', 'image/jpg', 'image/jpeg']
+    errors.add(:image, "の拡張子が間違っています") unless icon_image.content_type.in?(extension)
+  end
 
-  # これを追加すると画像アップロードがnilの時エラーがでてしまう
-  # validate :image_type
-  # private
-
-  # def image_type
-  #   if !icon_image.blob.content_type.in?(%('icon_image/jpeg icon_image/png'))
-  #     icon_image.purge # Rails6では、この1行は必要ない
-  #     errors.add(:icon_image, 'はJPEG/PNG形式を選択してアップロードしてください')
-  #   end
-  #   if !header_image.blob.content_type.in?(%('header_image/jpeg header_image/png'))
-  #     header_image.purge # Rails6では、この1行は必要ない
-  #     errors.add(:header_image, 'はJPEG/PNG形式を選択してアップロードしてください')
-  #   end
-  # end
-
+  def was_attached?
+    self.icon_image.attached?
+  end
 
 end
