@@ -42,9 +42,16 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @tags = ActsAsTaggableOn::Tag.all
     # コメント機能
     @comment = Comment.new
+
+    if params[:tag]
+      # フォローユーザの投稿を取得
+      @post = Post.find(params[:id]).tagged_with(params[:tag])
+    else
+      @post = Post.find(params[:id])
+    end
 
   end
 
