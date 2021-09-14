@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable
 
   # アソシエーションはこちら
   has_many :user_rooms
@@ -36,6 +36,11 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  validates :email, presence: true
+  validates :password, presence: true,length: { minimum: 6 }
+  validates :name, presence: true,length: { in: 1..50 }
+  validates :display_name, presence: true,length: { in: 1..50 }
+  validates :introduction, length: { maximum: 200 }
 
   # ひとまずアイコンのバリデーションはできたが、ヘッダーはどう記述すればよいのか？
   validate :icon_image_type, if: :was_attached?
