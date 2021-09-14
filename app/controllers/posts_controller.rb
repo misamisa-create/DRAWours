@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 
   def index
+    @tags = ActsAsTaggableOn::Tag.all
+
     # N+1問題を防ぐためのincludesメソッド
     # あとでfavoriteなども追加していく
     @posts_all = Post.includes(:user)
@@ -12,15 +14,19 @@ class PostsController < ApplicationController
     # current_userのidをpush
     # idにしないとcurrent_userがデータごとfollow_userに入ってしまうので注意！
     follow_users_ids.push(current_user.id)
-    # フォローユーザの投稿を取得
-    @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
-
+    if params[:tag]
+      # フォローユーザの投稿を取得
+      @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC").tagged_with(params[:tag])
+    else
+      @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
+    end
 
 
   end
 
   def new
     @post = Post.new
+    @tags = ActsAsTaggableOn::Tag.all
   end
 
 
@@ -31,22 +37,37 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
+<<<<<<< HEAD
+=======
+      @tags = ActsAsTaggableOn::Tag.all
+>>>>>>> origin/develop
       render :new
     end
   end
 
   def show
-    @post = Post.find(params[:id])
+    @tags = ActsAsTaggableOn::Tag.all
     # コメント機能
     @comment = Comment.new
+
+    if params[:tag]
+      # フォローユーザの投稿を取得
+      @post = Post.find(params[:id]).tagged_with(params[:tag])
+    else
+      @post = Post.find(params[:id])
+    end
 
   end
 
   def destroy
     @post = Post.find(params[:id])
     if @post.user == current_user
-      @post.destroy
-      redirect_to posts_path
+      if @post.destroy
+        redirect_to posts_path
+      else
+        @tags = ActsAsTaggableOn::Tag.all
+        render :show
+      end
     end
   end
 
@@ -54,6 +75,8 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title,:text,:image,:making_time,:instrument,:genre)
+    # tag_listを追加
+    params.require(:post).permit(:title,:text,:image,:making_time,:instrument, tag_list:[])
   end
+
 end

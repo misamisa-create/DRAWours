@@ -1,8 +1,14 @@
 class Post < ApplicationRecord
+<<<<<<< HEAD
   # activerecord導入のためのメソッド
   has_one_attached :image
 
   # アソシエーションは
+=======
+  # タグ機能
+  acts_as_taggable
+  # 一旦外部キーのnilを許可
+>>>>>>> origin/develop
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
