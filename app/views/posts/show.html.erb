@@ -53,7 +53,10 @@
           <%= link_to "削除",post_path(@post),method: :delete %>
         <% end %>
 
-        <%= render "favorites/favorite", post: @post %>
+
+        <div id="favorites_buttons_<%= @post.id %>">
+          <%= render "favorites/favorite", post: @post %>
+        </div>
       </div>
 
     </div>
