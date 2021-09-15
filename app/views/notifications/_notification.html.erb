@@ -1,4 +1,4 @@
-<!--コピペ-->
+<!--フォロー・いいねはくるがコメントが来ないエラーが出ている-->
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
@@ -6,17 +6,21 @@
   <%= link_to user_path(visitor) do %>
     <%= visitor.name %>さんが
   <% end %>
-</div>
-<% case notification.action
-  when "follow" %>
-  <p>あなたをフォローしました</p>
-    <% when "like" %>
-    <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
+
+<% case notification.action %>
+  <% when "follow" %>
+    <p>あなたをフォローしました</p>
+  <% when "like" %>
+    <%= link_to "あなたの投稿", notification.post %>
     <p>にいいねしました</p>
-      <% when "comment" %>
-        <%= link_to "あなたの投稿", notification.post %>
-       
+  <% when "comment" %>
+    <% if notification.post.user_id == visited.id %>
+      <%= link_to "あなたの投稿", notification.post %>
+    <% else %>
+      <%= link_to post_path(notification.post) do %>
+        <%= notification.post.user.name %>さんの投稿にコメントしました
+      <% end %>
       
-
-
+    <% end %>
 <% end %>
+</div>

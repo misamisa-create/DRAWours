@@ -1,10 +1,11 @@
 <%= link_to notifications_path do %>
   <% if unchecked_notifications.any? %>
-    <span class="fa-stack fa-2x">
-      <i class="fas fa-bell fa-stack-2x"></i>
-      <i class="fas fa-circle n-circle fa-stack-1x"></i>
-    </span>
+    <!--通知来た時のベル-->
+    <div class="nav-link fas fa-bell fa-lg mt-1 n-circle"></div>
   <% else %>
-    <i class="fas fa-bell fa-stack-2x"></i>
+    <div class="nav-link far fa-bell fa-lg mt-1"></div>
   <% end %>
 <% end %>
+
+
+
