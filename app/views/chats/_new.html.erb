@@ -1,4 +1,5 @@
 <%= form_with model: chat ,remote: true do |f| %>
   <%= f.text_field :message,class:"form-control", placeholder: 'チャット記入欄' %>
   <%= f.hidden_field :room_id %>
+  <%= f.hidden_field :user_id %>
 <% end %>
