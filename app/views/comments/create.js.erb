@@ -1,0 +1,4 @@
+<!--showページのid="comments_area"-->
+$("#comments_area").html("<%= j(render 'comments/index',{ post: @post })%>");
+<!--コメント送信後フォームを空にする-->
+$("textarea").val('')
