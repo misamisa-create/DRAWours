@@ -1,4 +1,4 @@
-$("#chat_message").html("<%= j(render 'chats/index',{chats:@chats})%>");
+$("#chat_message").html("<%= j(render 'chats/index',{chats:@chats,user:@user})%>");
 
-$('input[type=text]').val("")
+$('input[type=text]').val(""),
 

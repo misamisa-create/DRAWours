@@ -13,7 +13,10 @@
     <% else %>
      <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "400x400"  %><br />
     <% end %>
-    <%= render "relationships/info", user: @user %>
+    <div id="follow_form">
+      <%= render "relationships/info", user: @user %>
+    </div>
+
     <%= link_to "フォロー一覧",user_followings_path(@user) %>
     <%= link_to "フォロワー一覧",user_followers_path(@user) %><br />
     <%= @user.name %><br />
