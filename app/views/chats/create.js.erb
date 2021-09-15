@@ -1,4 +1,4 @@
-<!--あとで実装-->
-$('.message').append("<p style='text-align: left;'><%= @chat.message %></p>");
+$("#chat_message").html("<%= j(render 'chats/index',{chats:@chats})%>");
 
 $('input[type=text]').val("")
+
