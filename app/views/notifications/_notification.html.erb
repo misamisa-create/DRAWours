@@ -1,0 +1,22 @@
+<!--コピペ-->
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<div class="user-view clearfix ">
+  <%= link_to user_path(visitor) do %>
+    <%= visitor.name %>さんが
+  <% end %>
+</div>
+<% case notification.action
+  when "follow" %>
+  <p>あなたをフォローしました</p>
+    <% when "like" %>
+    <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
+    <p>にいいねしました</p>
+      <% when "comment" %>
+        <%= link_to "あなたの投稿", notification.post %>
+       
+      
+
+
+<% end %>

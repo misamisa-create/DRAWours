@@ -4,6 +4,8 @@ class FavoritesController < ApplicationController
     @post = Post.find(params[:post_id])
     favorite = current_user.favorites.new(post_id: @post.id)
     favorite.save
+    @post.create_notification_like!(current_user)
+    # respond_to :js
     # redirect_to request.referer
   end
 
