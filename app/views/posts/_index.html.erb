@@ -1,17 +1,8 @@
-<div>
-  <% @tags.each do |tag| %>
-    <%= link_to "#{tag.name}(#{tag.taggings_count})",tag_path(tag.name), class: "label label-default" %>
-  <% end %>
-</div>
-
-
 <div class="container">
   <div class="row">
     <div class="col-sm-12 mx-auto">
       <p><% posts.each do |post| %></p>
-
       <h3 class="text-center mt-5 font-weight-bold"><%= post.title %></h3>
-
       <!--枠線-->
       <div class="border border-secondary border-bottom-0 border-right-0 pt-3 pl-5 mb-5">
         <div class="row">

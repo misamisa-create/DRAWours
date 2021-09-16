@@ -20,7 +20,10 @@
       <%= link_to post_path(notification.post) do %>
         <%= notification.post.user.name %>さんの投稿にコメントしました
       <% end %>
-      
+      <%= Comment.find_by(id: notification.comment_id)&.comment %>
+
     <% end %>
 <% end %>
 </div>
+
+

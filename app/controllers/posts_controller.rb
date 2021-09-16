@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   def index
     @tags = ActsAsTaggableOn::Tag.all
-
     # N+1問題を防ぐためのincludesメソッド
     # あとでfavoriteなども追加していく
     @posts_all = Post.includes(:user)
@@ -19,16 +18,12 @@ class PostsController < ApplicationController
     else
       @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
     end
-
-
   end
 
   def new
     @post = Post.new
     @tags = ActsAsTaggableOn::Tag.all
   end
-
-
 
   def create
     @post = Post.new(post_params)
@@ -52,7 +47,6 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
     @comments = @post.comments.order(created_at: :desc)
-
   end
 
   def destroy
@@ -66,8 +60,6 @@ class PostsController < ApplicationController
       end
     end
   end
-
-
 
   private
   def post_params
