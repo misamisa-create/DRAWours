@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 mx-auto">
+    <div class="col-sm-10 mx-auto">
+
       <p><% posts.each do |post| %></p>
+      <!--作品タイトル-->
       <h3 class="text-center mt-5 font-weight-bold"><%= post.title %></h3>
       <!--枠線-->
       <div class="border border-secondary border-bottom-0 border-right-0 pt-3 pl-5 mb-5">
@@ -14,12 +16,15 @@
             <%= image_tag post.image,class:"w-100 rounded" %>
           </div>
         <% end %>
-        <!--<div class="offset-md-10 col-2 p-2 bg-secondary text-white-50 rounded-lg text-center mb-3">%= post.genre %></div>-->
-
         <div>
-          <%= raw(post.tag_list.map { |t| link_to t, tag_path(t), class: "label label-default" }.join(' ')) %>
+          <%= raw(post.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-outline-secondary mr-3" }.join(' ')) %>
 
         </div>
+
+        <div id="favorites_buttons_<%= post.id %>">
+          <%= render "favorites/favorite", post: post %>
+        </div>
+
         <div><%= link_to "#{post.comments.count} コメント", post_path(post) %></div>
 
         <div class="row d-flex align-items-center" style="height:120px;">
@@ -36,11 +41,9 @@
           <div class="col-sm-9"><%= post.text %></div>
         </div>
         <% if post.user == current_user %>
-          <%= link_to "削除",post_path(post),method: :delete %>
+          <%= link_to "投稿を削除する",post_path(post),method: :delete, class:"btn btn-secondary" %>
         <% end %>
-        <div id="favorites_buttons_<%= post.id %>">
-          <%= render "favorites/favorite", post: post %>
-        </div>
+
 
       </div>
       <% end %>
