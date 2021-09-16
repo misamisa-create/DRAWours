@@ -26,17 +26,11 @@ class ChatsController < ApplicationController
     @chat = Chat.new(room_id: @room.id)
   end
 
-
   def create
-
-
     # Aのchat内容を新規取得
     @chat = current_user.chats.new(chat_params)
     room = Room.find(chat_params[:room_id])
-
     @chat.save
-
-
     @chats = room.chats
 
 

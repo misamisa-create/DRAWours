@@ -12,9 +12,9 @@
     </div>
   <% else %>
   <div class="m-3">
-    <%= link_to user_path(@user) do %>
-      <% if @user.icon_image.attached? %>
-        <%= image_tag @user.icon_image.variant(resize: "70x70"),class:"rounded-circle",style:"width: 70px; height: 70px; object-fit: cover" %>
+    <%= link_to user_path(chat.user) do %>
+      <% if chat.user.icon_image.attached? %>
+        <%= image_tag chat.user.icon_image.variant(resize: "70x70"),class:"rounded-circle",style:"width: 70px; height: 70px; object-fit: cover" %>
       <% else %>
         <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "70x70" %><br />
       <% end %>

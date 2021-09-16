@@ -1,0 +1,20 @@
+<% visitor = notification.visitor %>
+<% post = notification.post %>
+
+<div class="user-view clearfix ">
+
+  <%= link_to user_path(notification.visitor) do %>
+    <!--画像に変更-->
+    <%= visitor.name %>
+  <% end %>
+  <!--helper.rbの情報-->
+  <%= notification_form(notification) %>
+  <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
+  <br>
+  <!--コメントレコードがnilかどうか-->
+  <% if !@comment.nil? %>
+    <p class="moderate-font" style="color: #C0C0C0;"><%= @comment %></p>
+  <% end %>
+</div>
+
+
