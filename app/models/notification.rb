@@ -1,6 +1,6 @@
 class Notification < ApplicationRecord
   # デフォルトの並び順を作成日時の降順にしている(新しい通知からデータを取得できる)
-  default_scope -> {order(created_at: :desc)}
+  default_scope -> { order(created_at: :desc) }
   # optional: trueでnilを許可している
   belongs_to :post, optional: true
   belongs_to :comment, optional: true

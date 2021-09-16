@@ -10,8 +10,6 @@ class CommentsController < ApplicationController
     #   respond_to :js
     # else
     #   render 'posts/show'
-
-
   end
 
   def destroy

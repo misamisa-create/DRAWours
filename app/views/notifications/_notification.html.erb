@@ -1,29 +1,20 @@
-<!--フォロー・いいねはくるがコメントが来ないエラーが出ている-->
 <% visitor = notification.visitor %>
-<% visited = notification.visited %>
+<% post = notification.post %>
 
 <div class="user-view clearfix ">
-  <%= link_to user_path(visitor) do %>
-    <%= visitor.name %>さんが
+
+  <%= link_to user_path(notification.visitor) do %>
+    <!--画像に変更-->
+    <%= visitor.name %>
   <% end %>
-
-<% case notification.action %>
-  <% when "follow" %>
-    <p>あなたをフォローしました</p>
-  <% when "like" %>
-    <%= link_to "あなたの投稿", notification.post %>
-    <p>にいいねしました</p>
-  <% when "comment" %>
-    <% if notification.post.user_id == visited.id %>
-      <%= link_to "あなたの投稿", notification.post %>
-    <% else %>
-      <%= link_to post_path(notification.post) do %>
-        <%= notification.post.user.name %>さんの投稿にコメントしました
-      <% end %>
-      <%= Comment.find_by(id: notification.comment_id)&.comment %>
-
-    <% end %>
-<% end %>
+  <!--helper.rbの情報-->
+  <%= notification_form(notification) %>
+  <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
+  <br>
+  <!--コメントレコードがnilかどうか-->
+  <% if !@comment.nil? %>
+    <p class="moderate-font" style="color: #C0C0C0;"><%= @comment %></p>
+  <% end %>
 </div>
 
 

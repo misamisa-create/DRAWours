@@ -53,7 +53,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.user == current_user
       if @post.destroy
-        redirect_to posts_path
+        redirect_to request.referer
       else
         @tags = ActsAsTaggableOn::Tag.all
         render :show
