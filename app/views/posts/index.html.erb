@@ -1,15 +1,21 @@
 <div class="container">
   <div class="row mx-auto mt-3">
-    <div class="col-sm-12 text-center bg-light p-3">
+    <div class="col-sm-12 text-center bg-light ">
+
     <% @tags.each do |tag| %>
-      <%= link_to "#{tag.name}(#{tag.taggings_count})",tag_path(tag.name), class: "btn btn-outline-secondary mr-3" %>
+      <%= link_to "#{tag.name}(#{tag.taggings_count})",tag_path(tag.name), class: "btn btn-outline-secondary mr-3 mb-3 mt-3", style:"width: 120px" %>
     <% end %>
     </div>
 
   </div>
 </div>
 
-
-<%= render "posts/index", posts: @posts %>
+<% if @posts.present? %>
+  <%= render "posts/index", posts: @posts %>
+<% else %>
+<div class="text-center m-5">
+  投稿はありません。
+</div>
+<% end %>
 
 
