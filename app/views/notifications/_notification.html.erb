@@ -1,30 +1,31 @@
 <% visitor = notification.visitor %>
 <% post = notification.post %>
-<div class="container">
-  <div class="row mx-auto w-75">
+
+  <!--<div class="row user-view clearfix ">-->
+  <div class="row m-3">
+    <div class="col-sm-9">
+      <!--画像に変更-->
+      <%= link_to user_path(visitor) do %>
+        <% if visitor.icon_image.attached? %>
+          <%= image_tag visitor.icon_image.variant(resize: "50x50"),class:"rounded-circle",style:"width: 50px; height: 50px; object-fit: cover" %>
+        <% else %>
+         <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "50x50" %>
+        <% end %>
+      <% end %>
+      <!--helper.rbの情報-->
+      <%= notification_form(notification) %></div>
+    <div class="col-sm-3 pt-3 text-right"><%= time_ago_in_words(notification.created_at) %>前</div>
+
+    <!--コメントレコードがnilかどうか-->
     <div class="col-sm-12">
-
-      <div class="user-view clearfix ">
-        <!--画像に変更-->
-        <%= link_to user_path(visitor) do %>
-          <% if visitor.icon_image.attached? %>
-            <%= image_tag visitor.icon_image.variant(resize: "50x50"),class:"rounded-circle",style:"width: 50px; height: 50px; object-fit: cover" %>
-          <% else %>
-           <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "50x50" %><br />
-          <% end %>
-        <% end %>
-        <!--helper.rbの情報-->
-        <%= notification_form(notification) %>
-        <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
-        <!--コメントレコードがnilかどうか-->
-        <% if !@comment.nil? %>
-          <p class="moderate-font" style="color: #C0C0C0;"><%= @comment %></p>
-        <% end %>
-      </div>
-
+      <% if !@comment.nil? %>
+        <p class="moderate-font text-center" style="color: #C0C0C0;">"<%= @comment %>"</p>
+      <% end %>
     </div>
+
+
   </div>
-</div>
+
 
 
 

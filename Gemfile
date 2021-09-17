@@ -78,3 +78,4 @@ gem 'jquery-rails'
 gem 'activestorage-validator'
 
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'rails-i18n', '~> 5.1'
