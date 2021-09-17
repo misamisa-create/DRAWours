@@ -1,35 +1,52 @@
-<div class="card mw-100">
+<div class="card mw-100 filter">
+  <!--ヘッダー-->
   <% if @user.header_image.attached? %>
     <%= image_tag @user.header_image,class:"header-image" %>
   <% else %>
    <%= image_tag 'img/no_image2.jpg',class:"header-image" %>
   <% end %>
+
   <div class="card-img-overlay">
-    <!--%= image_tag @user.icon_image,class:"icon-image-lg" %><br />-->
-
-
+    <!--アイコン画像-->
     <% if @user.icon_image.attached? %>
-      <%= image_tag @user.icon_image.variant(resize: "400x400"),class:"rounded-circle",style:"width: 400px; height: 400px; object-fit: cover" %><br />
+      <%= image_tag @user.icon_image.variant(resize: "300x300"),class:"rounded-circle",style:"width: 300px; height: 300px; object-fit: cover" %><br />
     <% else %>
-     <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "400x400"  %><br />
+     <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "300x300"  %><br />
     <% end %>
+    <!--フォローボタン-->
     <div id="follow_form">
       <%= render "relationships/info", user: @user %>
     </div>
+    <!--フォロー一覧-->
+    <div class="row mx-auto mt-3" style="width: 350px">
+      <div class="col-sm-6 text-center mb-3"><%= link_to "フォロー 一覧",user_followings_path(@user), class:"btn btn-outline-light", style: "width: 150px" %></div>
+      <div class="col-sm-6 text-center mb-3"><%= link_to "フォロワー 一覧",user_followers_path(@user), class:"btn btn-outline-light", style: "width: 150px" %></div>
+    </div>
+    <!--ユーザー情報-->
+    <div class="row border-top border-bottom border-white mx-auto" style="width: 450px">
+      <div class="col-sm-12 mb-3 mt-3"><%= @user.display_name %></div>
+      <div class="col-sm-12 mb-3"><%= @user.introduction %></div>
+      <div class="col-sm-12 mb-3"><%= @user.url %></div>
+    </div>
 
-    <%= link_to "フォロー一覧",user_followings_path(@user) %>
-    <%= link_to "フォロワー一覧",user_followers_path(@user) %><br />
-    <%= @user.name %><br />
-    <%= @user.display_name %><br />
-    <%= @user.introduction %><br />
-    <%= @user.url %><br />
-    <% if @user == current_user %>
-      <%= link_to "編集する",edit_user_path(@user) %>
-    <% end %>
-    <% if current_user != @user %>
-      <%= link_to "chatを始める", chat_path(@user.id) %>
-    <% end %>
+    <div class="row mx-auto mt-3">
+      <div class="col-sm-12 mb-3">
+        <% if @user == current_user %>
+          <%= link_to "編集する",edit_user_path(@user),class:"btn btn-success" %>
+        <% end %>
+        <% if current_user != @user %>
+          <%= link_to "chatを始める", chat_path(@user.id), class:"btn btn-outline-light mr-2" %>※チャットには相互フォローが必要です
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<%= render "posts/index", posts: @posts %>
+<% if @posts.present? %>
+  <%= render "posts/index", posts: @posts %>
+<% else %>
+<div class="text-center m-5">
+  投稿はありません。
+</div>
+<% end %>

@@ -1,17 +1,30 @@
 <% if @user == current_user %>
-  <h4>編集</h4>
-  <%= form_with model:@user, local:true do |f| %>
-    <%= f.text_field :name,autofocus: true %><br />
-    <%= f.text_field :display_name,autofocus: true %><br />
-    <%= f.text_field :introduction,autofocus: true %><br />
-    <%= f.text_field :url,autofocus: true %><br />
-    <%= f.label :"アイコン" %><br />
-    <%= f.file_field :icon_image %><br />
-    <%= f.label :"ヘッダー" %><br />
-    <%= f.file_field :header_image %><br />
-    <%= f.submit "更新する" %>
-  <% end %>
 
+<div class="container">
+  <div class="row mx-auto w-75">
+    <div class="col-sm-12 mx-auto bg-secondary text-white text-center rounded p-2 m-3">編集</div>
+    <div class="col-sm-12 mb-5">
+      <%= form_with model:@user, local:true do |f| %>
+        <%= f.label :"名前" %>
+        <%= f.text_field :name,autofocus: true, placeholder: "名前", class:"form-control mb-2" %>
+        <%= f.label :"ニックネーム" %>
+        <%= f.text_field :display_name,autofocus: true, placeholder: "ニックネーム", class:"form-control mb-2" %>
+        <%= f.label :"紹介文" %>
+        <%= f.text_area :introduction,autofocus: true, placeholder: "紹介文", class:"form-control mb-2" %>
+        <%= f.label :"URL" %>
+        <%= f.text_field :url,autofocus: true, placeholder: "自分のSNS URL等", class:"form-control mb-2" %>
+        <%= f.label :"アイコン",class:"mr-5" %>
+        <%= f.file_field :icon_image %><br />
+        <%= f.label :"ヘッダー",class:"mr-5" %>
+        <%= f.file_field :header_image %>
+      <div class="row mt-3">
+        <%= link_to "マイページに戻る",user_path(@user),class:"col-sm-5 btn btn-outline-secondary" %>
+        <%= f.submit "更新する",class:"col-sm-5 offset-sm-2 btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 <% else %>
-  <h5>ページが存在しません</h5>
+  <h5 class="text-center m-5">ページが存在しません</h5>
 <% end %>

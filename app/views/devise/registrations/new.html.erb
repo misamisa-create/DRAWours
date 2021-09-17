@@ -1,58 +1,68 @@
-<h2>Sign up</h2>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="container">
+  <div class="row border border-secondary m-5 pt-5 pb-5">
+    <div class="col-sm-10 mx-auto">
+      <div class="p-3 bg-secondary text-white rounded text-center mb-5">Sign up</div>
+      <%= form_with model:@user,url: user_registration_path,id: 'new_user',class:'new_user',local:true do |f| %>
 
-<%= form_with model:@user,url: user_registration_path,id: 'new_user',class:'new_user',local:true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field mb-3">
+          <%= f.label :"名前" %>
+          <%= f.text_field :name,autofocus: true, class:"float-right" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :"名前" %><br />
-    <%= f.text_field :name,autofocus: true %>
+        <div class="field mb-3">
+          <%= f.label :"ニックネーム" %>
+          <%= f.text_field :display_name,autofocus: true, class:"float-right" %>
+        </div>
+
+        <div class="field mb-3">
+          <%= f.label :"アイコン" %>
+          <div class="float-right">
+            <%= f.file_field :icon_image %>
+          </div>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :"ヘッダー" %>
+          <div class="float-right">
+            <%= f.file_field :header_image %>
+          </div>
+        </div>
+
+        <div class="field mb-5">
+          <%= f.label :"紹介文" %>
+          <%= f.text_area :introduction,autofocus: true, class:"float-right" %>
+        </div>
+
+        <div class="field mb-3">
+          <%= f.label :"自分のSNS URL等" %>
+          <%= f.text_field :url,autofocus: true, class:"float-right" %>
+        </div>
+
+        <div class="field mb-3">
+          <%= f.label :"メール" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"float-right" %>
+        </div>
+
+        <div class="field mb-3">
+          <%= f.label :"パスワード" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
+          <% end %>
+          <%= f.text_field :password, autocomplete: "new-password", class:"float-right" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :"パスワード(確認)" %>
+          <%= f.text_field :password_confirmation, autocomplete: "new-password", class:"float-right" %>
+        </div>
+
+        <div class="actions mt-5">
+          <%= f.submit "Sign up",class:"btn btn-outline-secondary float-right" %>
+        </div>
+      <% end %>
+
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :"ニックネーム" %><br />
-    <%= f.text_field :display_name,autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"アイコン" %><br />
-    <%= f.file_field :icon_image %>
-  </div>
-  <div class="field">
-    <%= f.label :"ヘッダー" %><br />
-    <%= f.file_field :header_image %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"紹介文" %><br />
-    <%= f.text_field :introduction,autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"自分のSNS URL等" %><br />
-    <%= f.text_field :url,autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"メール" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.text_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"パスワード(確認)" %><br />
-    <%= f.text_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
+</div>
 <%= render "devise/shared/links" %>
