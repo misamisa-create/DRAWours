@@ -3,7 +3,7 @@
     <div class="col-sm-12 text-center bg-light ">
 
     <% @tags.each do |tag| %>
-      <%= link_to "#{tag.name}(#{tag.taggings_count})",tag_path(tag.name), class: "btn btn-outline-secondary mr-3 mb-3 mt-3", style:"width: 120px" %>
+      <%= link_to "#{tag.name}",tag_path(tag.name), class: "btn btn-outline-secondary mr-2 mb-2 mt-2", style:"width: 150px" %>
     <% end %>
     </div>
 
