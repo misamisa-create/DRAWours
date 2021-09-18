@@ -22,14 +22,7 @@
           </div>
         </div>
 
-        <!--削除ボタン-->
-        <div class="row">
-          <div class="col-sm-12">
-            <% if post.user == current_user %>
-              <%= link_to "投稿を削除する",post_path(post),method: :delete, class:"btn btn-outline-danger float-right mt-3" %>
-            <% end %>
-          </div>
-        </div>
+
     </div>
     <% end %>
   </div>
