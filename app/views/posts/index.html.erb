@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mx-auto mt-3">
-    <div class="col-sm-12 text-center bg-light ">
+    <div class="col-sm-12 text-center ">
 
     <% @tags.each do |tag| %>
       <%= link_to "#{tag.name}",tag_path(tag.name), class: "btn btn-outline-secondary mr-2 mb-2 mt-2", style:"width: 150px" %>
@@ -9,6 +9,9 @@
 
   </div>
 </div>
+
+<!--週間いいねランキング-->
+<%= render "posts/rank", week_post_like_ranks: @week_post_like_ranks %>
 
 <% if @posts.present? %>
   <%= render "posts/index", posts: @posts %>
