@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root  'inquiry#index'
+
   get   'inquiry'         => 'inquiry#index'
   post  'inquiry/confirm' => 'inquiry#confirm'
   post  'inquiry/thanks'  => 'inquiry#thanks'
