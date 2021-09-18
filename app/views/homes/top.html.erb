@@ -1,12 +1,17 @@
+<h3 class="text-secondary mb-3 mt-5 text-center">表現者のためのSNSを。</h3>
+
+<div class="img__inner">
+  <% @posts.each do |post| %>
+    <%= image_tag post.image,class:"img" %>
+  <% end %>
+</div>
 <div class="container">
-  <div class="row m-5">
-    <div class="col-sm-6 text-center mx-auto border-left">
-      <h3 class="text-secondary mb-3">表現者のためのSNSを。</h3>
-      <p class="mb-3">DRAWours［ドロワーズ］は、誰でも簡単に自分の作品を投稿できるSNSです。<br />
+  <div class="row mb-5 mt-3">
+    <div class="col-sm-6 text-center mx-auto">
+      <p class="m-3">DRAWours［ドロワーズ］は、誰でも簡単に自分の作品を投稿できるSNSです。<br />
       使用にはアカウント作成が必要です。</p>
       <%= link_to "新規登録",new_user_registration_path, class: "nav-link btn btn-light mb-3" %>
       <%= link_to "ログイン",new_user_session_path, class: "nav-link btn btn-light" %>
     </div>
   </div>
 </div>
-        
