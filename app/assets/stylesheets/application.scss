@@ -45,7 +45,7 @@
   }
   // アニメーション用ロゴ
   .navbar-brand2 {
-    background: url("img/logo.png") no-repeat left center;
+    background: image-url("img/logo.png") no-repeat left center;
     background-size: contain;
     height: 70px;
     width: 280px;
@@ -99,7 +99,7 @@
 
   // ロゴ
   .navbar-brand {
-    background: url("img/logo.png") no-repeat left center;
+    background: image-url("img/logo.png") no-repeat left center;
     background-size: contain;
     height: 50px;
     width: 250px;
