@@ -22,8 +22,9 @@
 $(function(){
   // 初期画像の表示
   let index = 0;
+  
   $('.img').eq(index).addClass('current-img');
-
+  // 一定時間ごとに特定の処理を繰り返す
   setInterval(function(){
     // 非表示
     $('.img').eq(index).removeClass('current-img');
@@ -35,6 +36,7 @@ $(function(){
     }
     // 表示
     $('.img').eq(index).addClass('current-img');
+    // 切り替わりの速さ
   }, 3000);
 });
 

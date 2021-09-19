@@ -25,6 +25,7 @@
     // color: #6c6b6b;
   }
 // クロスフェード
+// 画像の大きさ
 .img__inner{
   width: 600px;
   height: 400px;
@@ -32,18 +33,22 @@
   overflow: hidden;
   position: relative;
 }
-
+// 中の画像
 .img{
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  // 不透明度
   opacity: 0;
+  // 変化
   transition: all 1.0s;
 }
 
 .current-img{
+  // 不透明度
   opacity: 1;
+  // 要素の重なり順
   z-index: 20;
 }
 
