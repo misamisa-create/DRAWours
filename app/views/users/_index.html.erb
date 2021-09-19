@@ -1,7 +1,7 @@
 <div class="container">
   <% users.each do |user| %>
-    <div class="row m-5 w-25 mx-auto">
-      <div class="col-sm-5 text-right">
+    <div class="row m-5 w-50 mx-auto">
+      <div class="col-sm-3 text-center">
         <%= link_to user_path(user) do %>
           <% if user.icon_image.attached? %>
             <%= image_tag user.icon_image.variant(resize: "50x50"),class:"rounded-circle",style:"width: 50px; height: 50px; object-fit: cover" %>
@@ -10,7 +10,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class="offset-col-1 col-sm-6"><%= user.name %></div>
+      <div class="offset-col-1 col-sm-8 mt-3 text-center border-bottom"><%= user.name %></div>
     </div>
   <% end %>
 </div>
