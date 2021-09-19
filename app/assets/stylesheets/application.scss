@@ -24,80 +24,105 @@
     box-sizing: border-box;
     // color: #6c6b6b;
   }
-// クロスフェード
-// 画像の大きさ
-.img__inner{
-  width: 600px;
-  height: 400px;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-}
-// 中の画像
-.img{
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  // 不透明度
-  opacity: 0;
-  // 変化
-  transition: all 1.0s;
-}
-
-.current-img{
-  // 不透明度
-  opacity: 1;
-  // 要素の重なり順
-  z-index: 20;
-}
-
-
-
-// ロゴ
-.navbar-brand {
-  background: url("img/logo.png") no-repeat left center;
-  background-size: contain;
-  height: 50px;
-  width: 250px;
-}
-.filter {
- background: #000;
-}
-
-.header-image{
-  width: 100%;
-  height: 1000px;
-  // height: auto;
-  object-fit: cover;
-  background-position: center;
-  background-size: cover;
-  // 画像を暗く
-  display: block;
-  opacity: .6;
-}
-
-// ヘッダーの文字を中央に
-.card-img-overlay{
-  padding: 0;
-  top: calc(20% - 0.5rem);
-  text-align: center;
-  color: white;
-}
-
-.navbar-dark .navbar-toggler{
-  /* ハンバーガーメニュー */
-  border-color: rgba(255, 255, 225, 1);
-}
-
-@media screen and (max-width:768px) {
-  .icon-image{
-  width: 80px;
-  height: 80px;
+  // トップページアニメーション
+  .start{
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9000;
   }
-  .icon-image-lg{
-  width: 200px;
-  height: 200px;
+  .start p{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    z-index: 9999;
+    width: 280px;
+  }
+  // アニメーション用ロゴ
+  .navbar-brand2 {
+    background: url("img/logo.png") no-repeat left center;
+    background-size: contain;
+    height: 70px;
+    width: 280px;
   }
 
-}
+  // クロスフェード
+  // 画像の大きさ
+  .img__inner{
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  // 中の画像
+  .img{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    // 不透明度
+    opacity: 0;
+    // 変化
+    transition: all 1.0s;
+  }
+
+  .current-img{
+    // 不透明度
+    opacity: 1;
+    // 要素の重なり順
+    z-index: 20;
+  }
+
+  // ロゴ
+  .navbar-brand {
+    background: url("img/logo.png") no-repeat left center;
+    background-size: contain;
+    height: 50px;
+    width: 250px;
+  }
+  .filter {
+   background: #000;
+  }
+
+  .header-image{
+    width: 100%;
+    height: 1000px;
+    // height: auto;
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    // 画像を暗く
+    display: block;
+    opacity: .6;
+  }
+
+  // ヘッダーの文字を中央に
+  .card-img-overlay{
+    padding: 0;
+    top: calc(20% - 0.5rem);
+    text-align: center;
+    color: white;
+  }
+
+  .navbar-dark .navbar-toggler{
+    /* ハンバーガーメニュー */
+    border-color: rgba(255, 255, 225, 1);
+  }
+
+  @media screen and (max-width:768px) {
+    .icon-image{
+    width: 80px;
+    height: 80px;
+    }
+    .icon-image-lg{
+    width: 200px;
+    height: 200px;
+    }
+
+  }

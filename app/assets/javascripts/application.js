@@ -19,10 +19,20 @@
 //= require turbolinks
 //= require_tree .
 
+// トップページアニメーション
+$(function(){
+  setTimeout(function(){
+    $('.start p').fadeIn(1600);
+  },500);
+  setTimeout(function(){
+    $('.start').fadeOut(500);
+  },2500);
+})
+
 $(function(){
   // 初期画像の表示
   let index = 0;
-  
+
   $('.img').eq(index).addClass('current-img');
   // 一定時間ごとに特定の処理を繰り返す
   setInterval(function(){
