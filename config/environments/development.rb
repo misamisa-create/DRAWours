@@ -70,4 +70,6 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto:  true
   }
+  config.action_mailer.default_url_options = { host: 'https://dacaf974387c4680becd35fdd3a32839.vfs.cloud9.ap-northeast-1.amazonaws.com/' }
+
 end
