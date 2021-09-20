@@ -4,7 +4,6 @@ class PostsController < ApplicationController
     @all_posts = Post.all
     # 週間いいねランキング
     @week_post_like_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').limit(4).pluck(:post_id))
-
     @tags = ActsAsTaggableOn::Tag.all
     # N+1問題を防ぐためのincludesメソッド
     # あとでfavoriteなども追加していく
@@ -21,6 +20,7 @@ class PostsController < ApplicationController
     @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
     # タグの一覧表示
     if params[:tag]
+      # タグ付けしている投稿を取得
       @posts = @posts_all.order("created_at DESC").tagged_with(params[:tag])
     end
   end
