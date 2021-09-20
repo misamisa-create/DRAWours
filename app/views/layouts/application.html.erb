@@ -57,19 +57,21 @@
             </li>
           </ul>
           <!--検索フォーム-->
-          <button type="button" class="btn btn-secondary mr-2" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fas fa-search" ></i>
-          </button>
-          <div class="collapse" id="collapseExample">
-            <div class="form-inline my-2 my-sm-0">
-              <%= form_tag(searches_path,:method => 'get') do %>
-                <%= text_field_tag "content", nil, placeholder: 'Search', class:"form-control" %>
-                <%= select_tag 'model',options_for_select({"制作者"=>"user","タイトル"=>"post"}), class:"form-control"%>
-                <%= select_tag 'method',options_for_select({"前方一致"=>"forward_match","後方一致"=>"backward_match","完全一致"=>"perfect","部分一致"=>"partial" }), class:"form-control"%>
-                <%= submit_tag 'Search', :name => nil,class:"btn btn-outline-light my-2 my-sm-0" %>
-              <% end %>
+          <% if user_signed_in? %>
+            <button type="button" class="btn btn-secondary mr-2" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-search" ></i>
+            </button>
+            <div class="collapse" id="collapseExample">
+              <div class="form-inline my-2 my-sm-0">
+                <%= form_tag(searches_path,:method => 'get') do %>
+                  <%= text_field_tag "content", nil, placeholder: 'Search', class:"form-control" %>
+                  <%= select_tag 'model',options_for_select({"制作者"=>"user","タイトル"=>"post"}), class:"form-control"%>
+                  <%= select_tag 'method',options_for_select({"前方一致"=>"forward_match","後方一致"=>"backward_match","完全一致"=>"perfect","部分一致"=>"partial" }), class:"form-control"%>
+                  <%= submit_tag 'Search', :name => nil,class:"btn btn-outline-light my-2 my-sm-0" %>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
 
         </div>
       </nav>
@@ -86,6 +88,6 @@
       </nav>
     </footer>
     <!--最初のページ-->
-      
+
   </body>
 </html>
