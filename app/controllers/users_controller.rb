@@ -11,12 +11,12 @@ class UsersController < ApplicationController
     @posts_all = Post.includes(:user)
     @user = User.find(params[:id])
 
-    if params[:tag]
+    # if params[:tag]
       # フォローユーザの投稿を取得
-      @posts = @posts_all.where(user_id: @user).order("created_at DESC").tagged_with(params[:tag])
-    else
+      # @posts = @posts_all.where(user_id: @user).order("created_at DESC").tagged_with(params[:tag])
+    # else
       @posts = @posts_all.where(user_id: @user).order("created_at DESC")
-    end
+    # end
 
   end
 
