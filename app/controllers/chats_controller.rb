@@ -12,15 +12,15 @@ class ChatsController < ApplicationController
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
 
     # もしuser_roomsが既に作られていたら
-    unless user_rooms.nil?
-      # user_roomに紐づくroomsテーブルのレコードを取得
-      @room = user_rooms.room
-    else
+    if user_rooms.nil?
       @room = Room.new
       @room.save
       # 採番したroomのidを使って、user_roomのレコードを2人分(A,B)作る(=A.B共通のroom_idを作る)
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
+    else
+      # user_roomに紐づくroomsテーブルのレコードを取得
+      @room = user_rooms.room
     end
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
@@ -33,15 +33,14 @@ class ChatsController < ApplicationController
     @chat.save
     @chats = room.chats
 
-
     #   redirect_to request.referer
     # else
     #   redirect_to request.referer
     # end
-
   end
 
   private
+
   def chat_params
     params.require(:chat).permit(:message, :room_id, :user_id)
   end

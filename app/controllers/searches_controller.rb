@@ -4,11 +4,12 @@ class SearchesController < ApplicationController
     @method = params["method"]
     @content = params["content"]
     # 最終的な検索結果
-    @records = search_for(@model,@content,@method)
+    @records = search_for(@model, @content, @method)
   end
 
   private
-  def search_for(model,content,method)
+
+  def search_for(model, content, method)
     if model == 'user'
       if method == "match"
         User.where(name: content)
@@ -30,8 +31,5 @@ class SearchesController < ApplicationController
         Post.where("title LIKE ?", "%#{content}%")
       end
     end
-
   end
 end
-
-

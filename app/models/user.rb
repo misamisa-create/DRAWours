@@ -28,7 +28,6 @@ class User < ApplicationRecord
   # 与フォロー関係を通して自分がフォローしている人を参照
   has_many :followings, through: :relationships, source: :followed
 
-
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -44,27 +43,26 @@ class User < ApplicationRecord
   # 通知レコード作成
   # いいねとほぼ同じ処理だが、自分で自分をフォローすることはないのでその記述は書かない
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?",current_user.id, id, 'follow'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
     # 通知レコードが存在しない場合
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
         action: 'follow'
-        )
-        notification.save if notification.valid?
+      )
+      notification.save if notification.valid?
     end
   end
 
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true,length: { minimum: 6 }
-  validates :name, presence: true,length: { in: 1..50 }
-  validates :display_name, presence: true,length: { in: 1..50 }
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :name, presence: true, length: { in: 1..50 }
+  validates :display_name, presence: true, length: { in: 1..50 }
   validates :introduction, length: { maximum: 200 }
 
   # ひとまずアイコンのバリデーションはできたが、ヘッダーはどう記述すればよいのか？
   validate :icon_image_type, if: :attached_icon_image?
   validate :header_image_type, if: :attached_header_image?
-
 
   def icon_image_type
     extension = ['image/png', 'image/jpg', 'image/jpeg']
@@ -72,7 +70,7 @@ class User < ApplicationRecord
   end
 
   def attached_icon_image?
-    self.icon_image.attached?
+    icon_image.attached?
   end
 
   def header_image_type
@@ -81,7 +79,6 @@ class User < ApplicationRecord
   end
 
   def attached_header_image?
-    self.header_image.attached?
+    header_image.attached?
   end
-
 end

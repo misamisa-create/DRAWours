@@ -16,25 +16,25 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  validates :text,    length: { maximum: 200 }
+  validates :text, length: { maximum: 200 }
 
   # いいね通知の作成メソッド
   def create_notification_like!(current_user)
     # すでにいいねされているか検索
     # ? はプレースホルダというもので、指定した値で置き換え可能
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ?", current_user.id, user_id, id, 'like' ])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ?", current_user.id, user_id, id, 'like'])
     # いいねされていない場合、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
         post_id: id,
         visited_id: user_id,
         action: 'like'
-        )
-        # 自分の投稿に対するいいねの場合は、通知済みとする
-        if notification.visitor_id == notification.visited_id
-          notification.checked = true
-        end
-        notification.save if notification.valid?
+      )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
     end
   end
 
@@ -58,14 +58,13 @@ class Post < ApplicationRecord
       comment_id: comment_id,
       visited_id: visited_id,
       action: 'comment'
-      )
-      # 自分の投稿に対するコメントの場合は、通知済みとする
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
-      notification.save if notification.valid?
+    )
+    # 自分の投稿に対するコメントの場合は、通知済みとする
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
   end
-
 
   # 画像バリデーション
   validate :image_content_type, if: :was_attached?
@@ -77,7 +76,6 @@ class Post < ApplicationRecord
   end
 
   def was_attached?
-    self.image.attached?
+    image.attached?
   end
-
 end
