@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   def index
+    # 検索時に使用
+    @all_posts = Post.all
     # 週間いいねランキング
     @week_post_like_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').limit(4).pluck(:post_id))
 
