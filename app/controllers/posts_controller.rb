@@ -67,9 +67,9 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     # tag_listを追加
-    params.require(:post).permit(:title,:text,:image,:making_time,:instrument, tag_list:[])
+    params.require(:post).permit(:title, :text, :image, :making_time, :instrument, tag_list: [])
   end
-
 end

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get   'inquiry'         => 'inquiry#index'
   post  'inquiry/confirm' => 'inquiry#confirm'
   post  'inquiry/thanks'  => 'inquiry#thanks'
@@ -17,15 +16,13 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
-
   end
   get 'chat/:id' => 'chats#show', as: 'chat'
-  resources :chats, only: [:show,:create]
+  resources :chats, only: [:show, :create]
 
   get '/searches' => 'searches#search'
   # タグ検索
   get 'tags/:tag', to: 'posts#index', as: :tag
 
   resources :notifications, only: :index
-
 end

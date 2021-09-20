@@ -6,6 +6,5 @@ class NotificationsController < ApplicationController
       # 確認済みに更新
       notification.update_attributes(checked: true)
     end
-    
   end
 end

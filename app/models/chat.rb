@@ -4,9 +4,4 @@ class Chat < ApplicationRecord
   # うまくかけられない
   validates :message, presence: true
   # validates :message, presence: true, on: :save
-
-
 end
-
-
-

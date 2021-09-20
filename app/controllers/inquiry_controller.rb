@@ -21,7 +21,7 @@ class InquiryController < ApplicationController
   # 問い合わせ完了通知画面
   def thanks
     # メール送信
-    @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message))    
+    @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message))
     InquiryMailer.received_email(@inquiry).deliver
 
     # 完了画面を表示
