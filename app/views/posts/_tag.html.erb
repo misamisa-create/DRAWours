@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row bg-light m-3 rounded border border-info w-75 mx-auto">
+    <div class="col-sm-12 mx-auto text-center p-2 border-bottom border-info bg-info text-white ">タグから調べる</div>
+    <div class="col-sm-12 text-center mt-3 mb-3">
+    <% tags.each do |tag| %>
+      <%= link_to "#{tag.name}(#{tag.taggings_count})",tag_path(tag.name), class: "btn btn-outline-secondary mr-1 mb-1 mt-1", style:"width: 170px" %>
+    <% end %>
+    </div>
+  </div>
+</div>
+

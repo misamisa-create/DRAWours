@@ -9,7 +9,11 @@
       <div class="border border-secondary border-bottom-0 border-right-0 pt-3 pl-5 mb-5">
         <div class="row">
           <!--画像上情報-->
-          <div class="offset-sm-7 col text-right">制作時間：<%= post.making_time %>日</div>
+          <div class="offset-sm-7 col text-right">
+          <% if post.making_time.present? %>
+            制作時間：<%= post.making_time %>日
+          <% end %>
+          </div>
           <div class="col text-right"><%= post.instrument %></div>
         </div>
         <!--メイン画像-->

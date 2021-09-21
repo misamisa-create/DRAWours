@@ -60,7 +60,6 @@ class User < ApplicationRecord
   validates :display_name, presence: true, length: { in: 1..50 }
   validates :introduction, length: { maximum: 200 }
 
-  # ひとまずアイコンのバリデーションはできたが、ヘッダーはどう記述すればよいのか？
   validate :icon_image_type, if: :attached_icon_image?
   validate :header_image_type, if: :attached_header_image?
 

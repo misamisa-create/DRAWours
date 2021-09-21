@@ -16,7 +16,9 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  validates :title, length: { maximum: 50 }
   validates :text, length: { maximum: 200 }
+  validates :instrument, length: { maximum: 50 }
 
   # いいね通知の作成メソッド
   def create_notification_like!(current_user)
