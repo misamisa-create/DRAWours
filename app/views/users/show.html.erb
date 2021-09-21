@@ -1,4 +1,4 @@
-<div class="mw-100 filter">
+<div class="card mw-100 filter rounded-0 border-0">
   <!--ヘッダー-->
   <% if @user.header_image.attached? %>
     <%= image_tag @user.header_image,class:"header-image" %>
@@ -9,9 +9,9 @@
   <div class="card-img-overlay">
     <!--アイコン画像-->
     <% if @user.icon_image.attached? %>
-      <%= image_tag @user.icon_image.variant(resize: "300x300"),class:"rounded-circle",style:"width: 300px; height: 300px; object-fit: cover" %><br />
+      <%= image_tag @user.icon_image.variant(resize: "300x300"),class:"icon-image rounded-circle",style:"width: 300px; height: 300px; object-fit: cover" %><br />
     <% else %>
-     <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "300x300"  %><br />
+     <%= image_tag 'img/no_image.jpg', class:"icon-image rounded-circle",size: "300x300"  %><br />
     <% end %>
     <!--フォローボタン-->
     <div id="follow_form">
