@@ -1,17 +1,25 @@
 <% post.comments.each do |comment| %>
-  <div class="mb-2">
-    <%= comment.created_at.strftime('%Y/%m/%d') %>
-    <%= link_to user_path(comment.user) do %>
-      <% if comment.user.icon_image.attached? %>
-        <%= image_tag comment.user.icon_image.variant(resize: "50x50"),class:"rounded-circle",style:"width: 50px; height: 50px; object-fit: cover" %>
-      <% else %>
-       <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "50x50" %>
+  <div class="row mt-2">
+
+    <div class="col-sm-1">
+      <%= link_to user_path(comment.user) do %>
+        <% if comment.user.icon_image.attached? %>
+          <%= image_tag comment.user.icon_image.variant(resize: "40x40"),class:"rounded-circle",style:"width: 40px; height: 40px; object-fit: cover" %>
+        <% else %>
+         <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "40x40" %>
+        <% end %>
       <% end %>
-    <% end %>
-    <%= comment.user.name %>
-    <%= comment.text %>
+    </div>
+    <div class="col-sm-2">
+      <%= comment.created_at.strftime('%Y/%m/%d') %>
+    </div>
+    <div class="col-sm-8">
+      <%= comment.text %>
+    </div>
+  </div>
+  <div class="mb-2 text-right">
     <% if comment.user == current_user %>
-      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,remote: true %>
+      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,remote: true ,class:"btn btn-secondary btn-sm" %>
     <% end %>
   </div>
 <% end %>

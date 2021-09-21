@@ -6,11 +6,13 @@
       <%= form_with model:@user,url: user_registration_path,id: 'new_user',class:'new_user',local:true do |f| %>
 
         <div class="field mb-3">
+          <span class="required"></span>
           <%= f.label :"名前" %>
           <%= f.text_field :name,autofocus: true, class:"float-right" %>
         </div>
 
         <div class="field mb-3">
+          <span class="required"></span>
           <%= f.label :"ニックネーム" %>
           <%= f.text_field :display_name,autofocus: true, class:"float-right" %>
         </div>
@@ -39,11 +41,13 @@
         </div>
 
         <div class="field mb-3">
+          <span class="required"></span>
           <%= f.label :"メール" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"float-right" %>
         </div>
 
         <div class="field mb-3">
+          <span class="required"></span>
           <%= f.label :"パスワード" %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
@@ -52,6 +56,7 @@
         </div>
 
         <div class="field">
+          <span class="required"></span>
           <%= f.label :"パスワード(確認)" %>
           <%= f.text_field :password_confirmation, autocomplete: "new-password", class:"float-right" %>
         </div>

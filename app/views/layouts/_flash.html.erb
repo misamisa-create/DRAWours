@@ -1,0 +1,12 @@
+<!--notice(通知) alert(警告)-->
+<% if flash.any? %>
+  <div class = "alert alert-warning">
+    <ul>
+      <% flash.each do |key, value| %>
+        <p class="alert alert-<%= key %>">
+          <%= value %>
+        </p>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

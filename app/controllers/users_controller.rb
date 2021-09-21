@@ -9,13 +9,7 @@ class UsersController < ApplicationController
     # あとでfavoriteなども追加していく
     @posts_all = Post.includes(:user)
     @user = User.find(params[:id])
-
-    # if params[:tag]
-    # フォローユーザの投稿を取得
-    # @posts = @posts_all.where(user_id: @user).order("created_at DESC").tagged_with(params[:tag])
-    # else
     @posts = @posts_all.where(user_id: @user).order("created_at DESC")
-    # end
   end
 
   def update
@@ -23,8 +17,9 @@ class UsersController < ApplicationController
     # if @user.update(user_params)
     # こんな風にバリデーションを無視したい
     @user.assign_attributes(user_params)
+    # ユーザのバリデーションを介さない
     if @user.save(validate: false)
-      # if @user.save :validate => false
+      flash[:notice] = 'ユーザ情報を更新しました'
       redirect_to user_path(@user.id)
     else
       render :edit

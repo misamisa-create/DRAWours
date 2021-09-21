@@ -1,32 +1,32 @@
 <%= render 'layouts/error_messages', model: @post %>
 
 <div class="container">
-  <div class="row p-5 mx-auto " style="width: 540px;">
+  <div class="row mt-5 mb-5 d-block mx-auto img-fluid w-75">
     <%= form_with model:@post, local:true do |f| %>
     <div class="col-sm-12 border shadow-sm bg-light rounded-3 p-3">
       <p><%= f.submit '投稿',class: "btn btn-secondary btn-lg btn-block rounded-pill" %></p>
       <p class="text-center"><%= f.text_field :title,class:"form-control",placeholder:"タイトル" %></p>
       <p class="text-center"><%= f.text_area :text,class:"form-control",placeholder:"本文" %></p>
-      <%= f.file_field :image %>
-
-
-      <div class="row p-3">
-        <div class="col">
+      <p><span class="required mr-3"></span><%= f.file_field :image %></p>
+      <div class="row mt-3 mb-3">
+        <div class="col-sm-2">
           <label class="col-form-label">制作期間</label>
         </div>
-        <div class="col">
+        <div class="col-sm">
           <%= f.number_field :making_time, min: 0, max: 99, class:"form-control" %>
         </div>
-        <div class="col">
+        <div class="col-sm">
           <label class="col-form-label">日</label>
         </div>
       </div>
-      <p class="text-center"><%= f.text_field :instrument,class:"form-control",placeholder:"使用画材・カメラの機種など" %></p>
+      <p><%= f.text_field :instrument,class:"form-control",placeholder:"使用画材・カメラの機種など" %></p>
       <!--タグ選択フォーム-->
+      <div>
       <% @tags.each do |tag| %>
         <%= f.check_box :tag_list,{multiple:true},"#{tag.name}", nil %>
         <%= f.label " #{tag.name}(#{tag.taggings_count})",class: "label label-default" %>
       <% end %>
+      </div>
 
     </div>
     <% end %>

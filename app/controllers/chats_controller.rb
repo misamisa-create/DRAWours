@@ -10,7 +10,6 @@ class ChatsController < ApplicationController
     # user_idがBで、room_idがAの属するroom_idとなるuser_roomテーブルのレコードを取得して、user_room変数に格納
     # AとBが属するroomを取得できるが、なぜ複数になる？
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
-
     # もしuser_roomsが既に作られていたら
     if user_rooms.nil?
       @room = Room.new
@@ -32,11 +31,6 @@ class ChatsController < ApplicationController
     room = Room.find(chat_params[:room_id])
     @chat.save
     @chats = room.chats
-
-    #   redirect_to request.referer
-    # else
-    #   redirect_to request.referer
-    # end
   end
 
   private
