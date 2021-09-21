@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row bg-light mt-3 rounded border border-info w-75 mx-auto">
-    <div class="col-sm-12 mx-auto text-center p-2 border-bottom border-info bg-info text-white ">話題の作品</div>
-    <div class="col-sm-12 mt-2 text-center"style="color: #C0C0C0;">いいねの週間ランキングです。好きな作家さんをみつけよう！</div>
+    <div class="col-sm-12 mx-auto text-center p-2 border-bottom border-info bg-info text-white accordion collapsed" data-target="#collapseRank" data-toggle="collapse" id="accordion" aria-controls="collapseRank">話題の作品</div>
+    <div id="collapseRank" class="col-sm-12 mt-2 text-center collapse" style="color: #C0C0C0;" data-parent="#accordion">いいねの週間ランキングです。好きな作家さんをみつけよう！</div>
     <% @week_post_like_ranks.each do |post| %>
-      <div class="col-sm-6">
+      <div id="collapseRank" class="col-sm-6 collapse" data-parent="#accordion">
         <!--作品タイトル-->
         <div class="text-center mt-2"><%= post.title %></div>
         <!--メイン画像-->
