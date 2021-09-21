@@ -34,6 +34,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      flash[:notice] = '投稿に成功しました'
       redirect_to posts_path
     else
       @tags = ActsAsTaggableOn::Tag.all
@@ -58,6 +59,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.user == current_user
       if @post.destroy
+        flash[:notice] = '投稿を削除しました'
         redirect_to request.referer
       else
         @tags = ActsAsTaggableOn::Tag.all
