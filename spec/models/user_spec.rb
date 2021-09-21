@@ -4,61 +4,11 @@ require 'rails_helper'
 
 describe 'モデルのテスト' do
   describe 'バリデーションのテスト' do
-    
-    subject { user.valid? }
 
-    let(:user) { create(:user) }
-
-    context 'nameカラム' do
-      it '空欄でないこと' do
-        user.name = ''
-        is_expected.to eq false
-      end
-      it '50文字以下であること: 50文字は〇' do
-        user.name = Faker::Lorem.characters(number: 50)
-        is_expected.to eq true
-      end
-      it '50文字以下であること: 51文字は×' do
-        user.name = Faker::Lorem.characters(number: 51)
-        is_expected.to eq false
-      end
-    end
-    context 'display_nameカラム' do
-      it '空欄でないこと' do
-        user.display_name = ''
-        is_expected.to eq false
-      end
-      it '50文字以下であること: 50文字は〇' do
-        user.display_name = Faker::Lorem.characters(number: 50)
-        is_expected.to eq true
-      end
-      it '50文字以下であること: 51文字は×' do
-        user.display_name = Faker::Lorem.characters(number: 51)
-        is_expected.to eq false
-      end
-    end
-
-    context 'emailカラム' do
-      it '空欄でないこと' do
-        user.email = ''
-        is_expected.to eq false
-      end
-      it '一意性があること' do
-        user.email = other_user.email
-        is_expected.to eq false
-      end
-    end
-
-
-    context 'introductionカラム' do
-      it '200文字以下であること: 200文字は〇' do
-        user.introduction = Faker::Lorem.characters(number: 200)
-        is_expected.to eq true
-      end
-      it '200文字以下であること: 201文字は×' do
-        user.introduction = Faker::Lorem.characters(number: 201)
-        is_expected.to eq false
-      end
+    it 'is valid' do
+      user = build(:user)
+      user.valid?
+      expect(user).to be_valid
     end
   end
 
