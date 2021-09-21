@@ -3,9 +3,9 @@
     <div class="col-sm-12 mx-auto text-center p-2 border-bottom border-info bg-info text-white ">話題の作品</div>
     <div class="col-sm-12 mt-2 text-center"style="color: #C0C0C0;">いいねの週間ランキングです。好きな作家さんをみつけよう！</div>
     <% @week_post_like_ranks.each do |post| %>
-    <div class="col-sm-6">
-      <!--作品タイトル-->
-      <div class="text-center mt-2"><%= post.title %></div>
+      <div class="col-sm-6">
+        <!--作品タイトル-->
+        <div class="text-center mt-2"><%= post.title %></div>
         <!--メイン画像-->
         <%= link_to post_path(post) do %>
           <div class="mt-2 mb-2">
@@ -21,9 +21,7 @@
             <%= link_to "#{post.comments.count} コメント", post_path(post) %>
           </div>
         </div>
-
-
-    </div>
+      </div>
     <% end %>
   </div>
 </div>
