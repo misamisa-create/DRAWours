@@ -9,6 +9,7 @@
     <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag('favicon.ico') %>
   </head>
 
   <body>
@@ -58,7 +59,7 @@
           </ul>
           <!--検索フォーム-->
           <% if user_signed_in? %>
-            <button type="button" class="btn btn-secondary mt-2 mb-2" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button type="button" class="btn btn-secondary mt-2 mb-2 mr-2" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               <i class="fas fa-search" ></i>
             </button>
             <div class="collapse" id="collapseExample">
