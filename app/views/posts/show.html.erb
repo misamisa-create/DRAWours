@@ -20,13 +20,20 @@
         <div class="m-3">
           <%= image_tag @post.image,class:"w-100 rounded" %>
         </div>
-
-        <div class="text-right mr-3">
-          <div id="favorites_buttons_<%= @post.id %>"><%= render "favorites/favorite", post: @post %></div>
+        <div class="row">
+          <div class="col-9 text-right pt-1">
+            <div id="favorites_buttons_<%= @post.id %>"><%= render "favorites/favorite", post: @post %></div>
+          </div>
+          <div class="col-3">
+            <!--ツイッターシェアボタン-->
+            <%= link_to  "https://twitter.com/share?url=#{request.url}&text=「#{@post.title}」を、Twitterでみんなに広めよう!", title: 'Twitter', target: '_blank' do %>
+              <div class="fab fa-twitter btn btn-link" style='color: #3399FF;'>Twitterでシェア</div>
+            <% end %>
+          </div>
         </div>
 
         <!--アイコンと本文-->
-        <div class="border-top border-bottom m-3">
+        <div class="border-top border-bottom m-2">
           <div class="row d-flex align-items-center m-3" style="height:auto;">
             <div class="col-3">
             <%= link_to user_path(@post.user) do %>
@@ -60,11 +67,12 @@
           </div>
         </div>
 
+
         <!--投稿削除-->
         <div class="row mt-3 mb-3">
           <div class="col-12 text-right">
             <% if @post.user == current_user %>
-              <%= link_to "投稿を削除する",post_path(@post),method: :delete, class:"btn btn-outline-danger mt-3 mb-5" %>
+              <%= link_to "投稿を削除する",post_path(@post),method: :delete, data: {confirm: "投稿を削除しますか？"}, class:"btn btn-outline-danger mt-3 mb-5" %>
             <% end %>
           </div>
         </div>

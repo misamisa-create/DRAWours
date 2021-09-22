@@ -24,7 +24,7 @@
         <% end %>
 
         <!--いいね、コメント、タグ-->
-        <div class="row m-3">
+        <div class="row m-2">
           <div class="col-6 text-right pt-2">
             <div id="favorites_buttons_<%= post.id %>"><%= render "favorites/favorite", post: post %></div>
           </div>
@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="text-center">
-          <%= raw(post.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-outline-secondary mb-3", style:"width: 100px" }.join(' ')) %>
+          <%= raw(post.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-outline-secondary mb-2", style:"width: 100px" }.join(' ')) %>
         </div>
 
         <!--アイコンと本文-->
@@ -57,7 +57,7 @@
         <div class="row mt-3 mb-3">
           <div class="col-sm-12">
             <% if post.user == current_user %>
-              <%= link_to "投稿を削除する",post_path(post),method: :delete, class:"btn btn-outline-danger float-right mt-3" %>
+              <%= link_to "投稿を削除する",post_path(post),method: :delete, data: {confirm: "投稿を削除しますか？"}, class:"btn btn-outline-danger float-right mt-3" %>
             <% end %>
           </div>
         </div>
