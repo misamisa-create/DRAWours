@@ -1,31 +1,29 @@
 <div class="container">
   <div class="row mx-auto w-75 m-5">
-    <div class="col-sm-12 mx-auto bg-secondary text-white text-center rounded p-2 m-3">フォロワー　一覧</div>
-
+    <div class="col-sm-12 text-center bg-secondary text-white rounded p-2 mb-3 ">フォロワー 一覧</div>
     <% if @users.exists? %>
-      <div class="row">
-        <% @users. each do |user| %>
-          <div class="col-sm-2 mb-2">
-            <!--アイコン-->
-            <%= link_to user_path(user) do %>
-              <% if user.icon_image.attached? %>
-                <%= image_tag user.icon_image.variant(resize: "50x50"),class:"rounded-circle",style:"width: 50px; height: 50px; object-fit: cover" %>
-              <% else %>
-               <%= image_tag 'img/no_image.jpg', class:"rounded-circle",size: "50x50" %><br />
-              <% end %>
+      <% @users. each do |user| %>
+        <div class="col-2 mb-2">
+          <!--アイコン-->
+          <%= link_to user_path(user) do %>
+            <% if user.icon_image.attached? %>
+              <%= image_tag user.icon_image.variant(resize: "50x50"),class:"icon-image rounded-circle",style:"width: 50px; height: 50px; object-fit: cover" %>
+            <% else %>
+             <%= image_tag 'img/no_image.jpg', class:"icon-image rounded-circle",size: "50x50" %><br />
             <% end %>
-          </div>
-          <div class="col-sm-4 mb-2 pt-2"><%= user.name %></div>
-          <div class="col-sm-6 text-right mb-2 pt-2">フォロー数<%= user.followings.count %>人 / フォロワー数<%= user.followers.count %>人</div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+        <div class="col-4 original-text mb-2 pt-2">
+          <%= user.name %>
+        </div>
+        <div class="col-6 text-right original-text mb-2 pt-2">
+          フォロー数<%= user.followings.count %>人 / フォロワー数<%= user.followers.count %>人
+        </div>
+      <% end %>
     <% else %>
-      <div class="row mx-auto">
-        <div class="col-sm-12 text-center ">
+        <div class="col-sm-12 text-center mt-2">
           ユーザーはいません
         </div>
-      </div>
     <% end %>
-
   </div>
 </div>
