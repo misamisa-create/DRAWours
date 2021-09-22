@@ -17,9 +17,6 @@
           </div>
           <div class="col-sm-4 mb-2 pt-2"><%= user.name %></div>
           <div class="col-sm-6 text-right mb-2 pt-2">フォロー数<%= user.followings.count %>人 / フォロワー数<%= user.followers.count %>人</div>
-          <!--<div id="follow_form">-->
-          <!--  %= render "relationships/info", user: @user %>-->
-          <!--</div>-->
         <% end %>
       </div>
     <% else %>

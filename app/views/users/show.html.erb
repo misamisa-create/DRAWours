@@ -15,9 +15,7 @@
     <% end %>
     <!--フォローボタン-->
     <div id="follow_form">
-      <% if @user != current_user %>
-        <%= render "relationships/info", user: @user %>
-      <% end %>
+      <%= render "relationships/info", user: @user %>
     </div>
     <!--フォロー一覧-->
     <div class="row mx-auto mt-3" style="width: 350px">
