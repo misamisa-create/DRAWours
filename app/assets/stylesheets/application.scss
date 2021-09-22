@@ -71,8 +71,8 @@
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
   }
   // 中の画像
   // レスポンシブしたい
@@ -106,8 +106,8 @@
   .navbar-brand {
     background: image-url("img/logo.png") no-repeat left center;
     background-size: contain;
-    height: 50px;
-    width: 250px;
+    height: 40px;
+    width: 180px;
   }
   .navbar-dark .navbar-toggler{
     /* ナブバーのハンバーガーメニュー */
@@ -148,8 +148,31 @@
   }
 
   @media screen and (max-width:768px) {
+    * {
+      font-size: 11px;
+    }
+
+    // トップページアニメーションロゴサイズ
+    .start p{
+      width: 140px;
+    }
+    // アニメーションロゴサイズ
+    .navbar-brand2 {
+      height: 35px;
+      width: 140px;
+    }
+    // ナブバーロゴ
+    .navbar-brand {
+      height: 25px;
+      width: 125px;
+    }
     .icon-image{
       zoom: 0.5;
     }
+    // ↓ユーザヘッダー関連
+    .header-image{
+      height: 600px;
+    }
+
 
   }

@@ -6,15 +6,15 @@
       <!--作品タイトル-->
       <h3 class="text-center mt-5 font-weight-bold"><%= post.title %></h3>
       <!--枠線-->
-      <div class="border border-secondary border-bottom-0 border-right-0 pt-3 mb-5">
+      <div class="border border-bottom-0 border-right-0 mb-5">
         <!--画像上の情報-->
-        <div class="row mt-3 mr-5">
-          <div class="offset-sm-7 col-sm text-right">
+        <div class="row mt-3 mr-1">
+          <div class="offset-sm-5 col text-right">
           <% if post.making_time.present? %>
             制作時間：<%= post.making_time %>日
           <% end %>
           </div>
-          <div class="col-sm text-right"><%= post.instrument %></div>
+          <div class="col text-right"><%= post.instrument %></div>
         </div>
         <!--メイン画像-->
         <%= link_to post_path(post) do %>
@@ -33,12 +33,12 @@
           </div>
         </div>
         <div class="text-center">
-          <%= raw(post.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-outline-secondary mb-3", style:"width: 120px" }.join(' ')) %>
+          <%= raw(post.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-outline-secondary mb-3", style:"width: 100px" }.join(' ')) %>
         </div>
 
         <!--アイコンと本文-->
         <div class="border-top border-bottom m-3">
-          <div class="row d-flex align-items-center m-3" style="height:120px;">
+          <div class="row d-flex align-items-center m-3" style="height:auto;">
             <div class="col-3">
             <%= link_to user_path(post.user) do %>
               <!--CSSと併用すると%= image_tag post.user.icon_image,class:"icon-image"%>-->
@@ -54,7 +54,7 @@
         </div>
 
         <!--削除ボタン-->
-        <div class="row m-3">
+        <div class="row mt-3 mb-3">
           <div class="col-sm-12">
             <% if post.user == current_user %>
               <%= link_to "投稿を削除する",post_path(post),method: :delete, class:"btn btn-outline-danger float-right mt-3" %>

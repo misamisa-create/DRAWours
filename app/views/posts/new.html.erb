@@ -7,15 +7,15 @@
       <p><%= f.submit '投稿',class: "btn btn-secondary btn-lg btn-block rounded-pill" %></p>
       <p class="text-center"><%= f.text_field :title,class:"form-control",placeholder:"タイトル" %></p>
       <p class="text-center"><%= f.text_area :text,class:"form-control",placeholder:"本文" %></p>
-      <p><span class="required mr-3"></span><%= f.file_field :image %></p>
+      <div><span class="required mr-3"></span><%= f.file_field :image ,class:"m-2"%></div>
       <div class="row mt-3 mb-3">
-        <div class="col-sm-2">
+        <div class="col">
           <label class="col-form-label">制作期間</label>
         </div>
-        <div class="col-sm">
+        <div class="col">
           <%= f.number_field :making_time, min: 0, max: 99, class:"form-control" %>
         </div>
-        <div class="col-sm">
+        <div class="col">
           <label class="col-form-label">日</label>
         </div>
       </div>

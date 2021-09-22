@@ -1,19 +1,21 @@
+<!--一番最初のアニメーション-->
 <div class="start">
   <p class="navbar-brand2"></p>
 </div>
 
+<!--トップページの画像と文字-->
 <div class="img__inner filter">
   <div class="dark">
   <% @posts.each do |post| %>
     <%= image_tag post.image,class:"img" %>
   <% end %>
   </div>
-  <!--<p>表現者のためのSNSを。</p>-->
-  <div class="top-text text-center text-white mx-auto"style:"height: auto; width: auto; ">
+  <!--top-textはCSSで定義-->
+  <div class="top-text text-center text-white mx-auto" style="width: 85%; ">
     <div style="font-size: 2em;">表現者のためのSNSを。</div>
     <div class="mt-5 mb-1">DRAWours［ドロワーズ］は、誰でも簡単に自分の作品を投稿できるSNSです。</div>
     <div class="mb-5">使用にはアカウント作成が必要です。</div>
-    <div><%= link_to "新規登録",new_user_registration_path, class: "nav-link btn btn-light mb-3" %></div>
-    <div><%= link_to "ログイン",new_user_session_path, class: "nav-link btn btn-light mb-5" %></div>
+    <div><%= link_to "新規登録",new_user_registration_path, class: "nav-link btn btn-light mb-3 mx-auto",style: "width: 65%" %></div>
+    <div><%= link_to "ログイン",new_user_session_path, class: "nav-link btn btn-light mb-5 mx-auto",style: "width: 65%" %></div>
   </div>
 </div>
