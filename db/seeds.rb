@@ -11,6 +11,7 @@ array.each{|tag|
   tag_list = ActsAsTaggableOn::Tag.new
   tag_list.name = tag
   tag_list.save
-
 }
+
+User.create!(name: 'test',display_name: 'test', email: 'test@test', password: 'testuser', confirmed_at: Time.now)
 
