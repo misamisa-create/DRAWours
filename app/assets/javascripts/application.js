@@ -16,8 +16,16 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
+//= require jquery.jscroll.min.js
 //= require turbolinks
 //= require_tree .
+
+// 無限スクロール
+$(function() {
+  $('.jscroll').jscroll;
+    contentSelector: '.post'
+    nextSelector: "span.next a"
+});
 
 // トップページアニメーション
 $(document).on('turbolinks:load',function(){

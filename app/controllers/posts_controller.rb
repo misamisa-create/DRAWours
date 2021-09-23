@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     # idにしないとcurrent_userがデータごとfollow_userに入ってしまうので注意！
     follow_users_ids.push(current_user.id)
     # タイムラインの投稿を取得
-    @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
+    @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC").page(params[:page]).per(5)
     # タグの一覧表示
     if params[:tag]
       # タグ付けしている投稿を取得
