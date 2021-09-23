@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     # タグの一覧表示
     if params[:tag]
       # タグ付けしている投稿を取得
-      @posts = @posts_all.order("created_at DESC").tagged_with(params[:tag])
+      @posts = @posts_all.order("created_at DESC").tagged_with(params[:tag]).page(params[:page]).per(5)
     end
   end
 
