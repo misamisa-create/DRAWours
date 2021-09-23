@@ -14,13 +14,13 @@ module NotificationsHelper
     # notification.actionがfollowかlikeかcommentか
     case notification.action
     when "follow"
-      tag.a(notification.visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "があなたをフォローしました"
+      tag.a(notification.visitor.display_name, href: user_path(@visitor), style: "font-weight: bold;") + "があなたをフォローしました"
     when "like"
-      tag.a(notification.visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にいいねしました"
+      tag.a(notification.visitor.display_name, href: user_path(@visitor), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にいいねしました"
     when "comment" then
       # コメントのidとテキストカラム（内容）を取り出す
       @comment = Comment.find_by(id: notification.comment_id)&.text
-      tag.a(notification.visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にコメントしました"
+      tag.a(notification.visitor.display_name, href: user_path(@visitor), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にコメントしました"
     end
   end
 end
