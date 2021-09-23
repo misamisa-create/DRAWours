@@ -16,9 +16,12 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    collection do
+      get :favorites
+    end
   end
   get 'chat/:id' => 'chats#show', as: 'chat'
-  resources :chats, only: [:show, :create]
+  resources :chats, only: [:index, :create]
 
   get '/searches' => 'searches#search'
   # タグ検索

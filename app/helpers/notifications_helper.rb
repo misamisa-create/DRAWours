@@ -21,6 +21,11 @@ module NotificationsHelper
       # コメントのidとテキストカラム（内容）を取り出す
       @comment = Comment.find_by(id: notification.comment_id)&.text
       tag.a(notification.visitor.display_name, href: user_path(@visitor), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にコメントしました"
+
+    when "chat" then
+      # コメントのidとテキストカラム（内容）を取り出す
+      tag.a(notification.visitor.display_name, href: user_path(@visitor), style: "font-weight: bold;") + "が" + tag.a('あなたのチャット', href: chat_path(notification.visitor_id), style: "font-weight: bold;") + "にチャットしました"
     end
+
   end
 end
