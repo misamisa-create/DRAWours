@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   # タグ検索
   get 'tags/:tag', to: 'posts#index', as: :tag
 
-  resources :notifications, only: :index
+  resources :notifications, only: [:index, :destroy]
 end
