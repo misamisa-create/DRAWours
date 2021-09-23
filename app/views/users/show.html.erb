@@ -43,10 +43,28 @@
   </div>
 </div>
 
-<% if @posts.present? %>
-  <%= render "posts/index", posts: @posts %>
-<% else %>
-<div class="text-center m-5">
-  投稿はありません。
+<!--タブ表示-->
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <div class="col-4 nav-link active text-center font-weight-bold text-secondary" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" data-toggle="tab">myPOSTS</div>
+    <div class="col-4 nav-link text-center font-weight-bold text-secondary" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" data-toggle="tab">myCHAT</div>
+    <div class="col-4 nav-link text-center font-weight-bold text-secondary" id="nav-contact-tab" data-bs-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" data-toggle="tab">myFAVORITES</div>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <% if @posts.present? %>
+      <%= render "posts/index", posts: @posts %>
+    <% else %>
+    <div class="text-center m-5">
+      投稿はありません。
+    </div>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <%= render "chats/all", user_rooms: @user_rooms %>
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <%= render "users/favorites", favorite_posts: @favorite_posts %>
+  </div>
 </div>
-<% end %>
