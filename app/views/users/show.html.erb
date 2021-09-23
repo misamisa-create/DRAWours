@@ -26,7 +26,7 @@
     <div class="row border-top border-bottom border-white mx-auto" style="width: 350px">
       <div class="col-sm-12 mb-3 mt-3"><%= @user.display_name %></div>
       <div class="col-sm-12 mb-3"><%= @user.introduction %></div>
-      <div class="col-sm-12 mb-3"><%= @user.url %></div>
+      <div class="col-sm-12 mb-3"><%= text_url_to_link(h(@user.url)).html_safe %></div>
     </div>
 
     <div class="row mx-auto mt-3">
