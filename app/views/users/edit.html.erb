@@ -8,11 +8,11 @@
         <%= f.label :"名前" %>
         <%= f.text_field :name,autofocus: true, placeholder: "名前", class:"form-control mb-2" %>
         <%= f.label :"ニックネーム" %>
-        <%= f.text_field :display_name,autofocus: true, placeholder: "ニックネーム", class:"form-control mb-2" %>
+        <%= f.text_field :display_name, placeholder: "ニックネーム", class:"form-control mb-2" %>
         <%= f.label :"紹介文" %>
-        <%= f.text_area :introduction,autofocus: true, placeholder: "紹介文", class:"form-control mb-2" %>
+        <%= f.text_area :introduction, placeholder: "紹介文", class:"form-control mb-2" %>
         <%= f.label :"URL" %>
-        <%= f.text_field :url,autofocus: true, placeholder: "自分のSNS URL等", class:"form-control mb-2" %>
+        <%= f.text_field :url, placeholder: "自分のSNS URL等", class:"form-control mb-2" %>
         <%= f.label :"アイコン",class:"mr-5" %>
         <%= f.file_field :icon_image %><br />
         <%= f.label :"ヘッダー",class:"mr-5" %>
