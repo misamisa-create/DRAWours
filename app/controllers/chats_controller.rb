@@ -29,8 +29,30 @@ class ChatsController < ApplicationController
     # Aのchat内容を新規取得
     @chat = current_user.chats.new(chat_params)
     room = Room.find(chat_params[:room_id])
-    @chat.save
-    @chats = room.chats
+    # チャット通知
+    @visited_id = params[:chat][:visited_id]
+    @room_id = @chat.room
+
+    if @chat.save
+      @chats = room.chats
+      # チャット通知
+      notification = current_user.active_notifications.new(
+        room_id: @room_id.id,
+        chat_id: @chat.id,
+        visited_id: @visited_id,
+        visitor_id: current_user.id,
+        action: 'chat'
+      )
+      # 自分の投稿に対するチャットの場合は、通知済みとする
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      # byebug
+      notification.save if notification.valid?
+      # redirect_to room_path(chat.room)
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
