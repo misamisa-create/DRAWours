@@ -2,10 +2,10 @@ class ChatsController < ApplicationController
   before_action :follow_each_other, only: [:show]
 
   # userコントローラで定義
-  # def index
-    # my_rooms_ids = current_user.user_rooms.select(:room_id)
-    # @user_rooms = UserRoom.includes(:chats, :user).where(room_id: my_rooms_ids).where.not(user_id: current_user.id).reverse_order
-  # end
+  def index
+    my_rooms_ids = current_user.user_rooms.select(:room_id)
+    @user_rooms = UserRoom.includes(:chats, :user).where(room_id: my_rooms_ids).where.not(user_id: current_user.id).reverse_order
+  end
 
   def show
     # Bさんのユーザー情報を取得

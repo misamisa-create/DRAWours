@@ -1,7 +1,9 @@
-<div class="row my-5">
-  <% if user_rooms.empty? %><p class="ml-4">メッセージはありません</p><% end %>
-  <% user_rooms.each do |room| %>
-    <div class="col-8 mx-auto mb-3 border border-secondary rounded pt-2 px-2">
+<div class="container">
+<div class="row m-5">
+  <div class="col-sm-12 text-center bg-secondary text-white rounded p-2 mb-3 ">チャット一覧</div>
+  <% if @user_rooms.empty? %><p class="ml-4">メッセージはありません</p><% end %>
+  <% @user_rooms.each do |room| %>
+    <div class="col-12 mx-auto mb-3 border border-secondary rounded pt-2 px-2">
       <div class="user border-bottom border-secondary">
       <%= link_to chat_path(room.user) do %>
         <span class="text-break"><%= room.user.name %></span>
@@ -20,4 +22,5 @@
       <% end %>
     </div>
   <% end %>
+</div>
 </div>

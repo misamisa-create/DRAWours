@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @posts_all.where(user_id: @user).order("created_at DESC").page(params[:page]).per(5)
 
-    my_rooms_ids = current_user.user_rooms.select(:room_id)
-    @user_rooms = UserRoom.includes(:chats, :user).where(room_id: my_rooms_ids).where.not(user_id: current_user.id).reverse_order
+    # my_rooms_ids = current_user.user_rooms.select(:room_id)
+    # @user_rooms = UserRoom.includes(:chats, :user).where(room_id: my_rooms_ids).where.not(user_id: current_user.id).reverse_order
   end
 
   def update
