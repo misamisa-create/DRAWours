@@ -155,11 +155,19 @@
     border-radius: 0.5em;
     margin-left: 0.3em;
   }
+  // アイコンの色(新規投稿ボタン)
+    .icon-color{
+    color: lightgray;
+  }
 
 
   @media screen and (max-width:768px) {
     * {
       font-size: 12px;
+    }
+    // メニューバーでyieldを隠さないようにする
+    .main-contents{
+      padding-bottom: 3rem;
     }
 
     // トップページアニメーションロゴサイズ
@@ -187,6 +195,18 @@
     .original-text{
       font-size: 10px;
     }
-
-
+    // footerを見えなくする
+    .footer{
+      display: none;
+    }
+    // ナブバーのメニューを一部見えなくする
+    .top-nav{
+      display: none;
+    }
+  }
+  @media screen and (min-width:768px) {
+    // 下のメニューバーの表示
+    .bottom-nav{
+      display: none;
+    }
   }

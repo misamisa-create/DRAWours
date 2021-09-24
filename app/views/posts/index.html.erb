@@ -7,8 +7,11 @@
   <%= render "posts/index", posts: @posts %>
 <% else %>
 <div class="text-center m-5">
-  投稿はありません。
+  投稿はありません。<!--新規投稿-->
 </div>
 <% end %>
+
+<!--pagenateはSCSSで見えないように調整-->
+<%= paginate @posts %>
 
 

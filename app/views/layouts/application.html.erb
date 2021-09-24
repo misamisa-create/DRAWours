@@ -17,10 +17,19 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
         <a class="navbar-brand" href="/"></a>
-        <!--ハンバーガーメニューアイコン-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <!--要素を右寄せ-->
+        <div class="justify-content-end">
+          <!--端末で表示する新規投稿マーク-->
+          <% if user_signed_in? %>
+            <%= link_to new_post_path do %>
+              <div class="fas fa-pen-square fa-2x btn icon-color bottom-nav form-inline"></div>
+            <% end %>
+          <% end %>
+          <!--ハンバーガーメニューアイコン-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
         <!--ハンバーガーメニュー中身-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto pt-2 pb-2">
@@ -29,21 +38,28 @@
                 <%= link_to "logOUT",destroy_user_session_path,method: :delete, data: {confirm: "ログアウトしますか？"}, class: "nav-link" %>
               </li>
               <!--マイページ-->
-              <li class="nav-item m-1">
+              <li class="nav-item m-1 top-nav">
                 <%= link_to "ourPOSTS",posts_path, class: "nav-link" %>
               </li>
-              <li class="nav-item m-1">
+              <li class="nav-item m-1 top-nav">
                 <%= link_to "newPOSTS",new_post_path, class: "nav-link" %>
               </li>
-              <li class="nav-item m-1">
+              <li class="nav-item m-1 top-nav">
                 <%= link_to "myPAGE",user_path(current_user), class: "nav-link mr-1" %>
               </li>
-              <li class="nav-item m-1">
+              <li class="nav-item m-1 top-nav">
                 <%= link_to "myCHAT",chats_path, class: "nav-link mr-1" %>
               </li>
               <!--通知アイコン-->
-              <li class="nav-item m-1">
-                <%= render 'partial/circle' %>
+              <li class="nav-item m-1 top-nav">
+                <%= link_to notifications_path do %>
+                  <% if unchecked_notifications.any? %>
+                    <!--通知来た時のベル-->
+                    <div class="nav-link fas fa-bell fa-lg mt-1 n-circle"></div>
+                  <% else %>
+                    <div class="nav-link far fa-bell fa-lg mt-1"></div>
+                  <% end %>
+                <% end %>
               </li>
                 <!--お問い合わせ-->
               <li class="nav-item m-1">
@@ -62,7 +78,7 @@
           </ul>
           <!--検索フォーム-->
           <% if user_signed_in? %>
-            <button type="button" class="btn btn-secondary mt-2 mb-2 mr-2" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button type="button" class="btn btn-secondary mt-2 mb-2 mr-2 form-inline" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               <i class="fas fa-search" ></i>
             </button>
             <div class="collapse" id="collapseExample">
@@ -82,11 +98,44 @@
     </header>
 
     <%= render partial: 'layouts/flash' %>
-
-    <%= yield %>
+    <!--レスポンシブの際SCSSで少しpaddingをつける-->
+    <div class="main-contents">
+      <%= yield %>
+    </div>
+    <!--端末で表示されるメニューバー-->
+    <% if user_signed_in? %>
+      <ul class="w-100 shadow-lg list-unstyled list-group list-group-horizontal text-center bottom-nav fixed-bottom">
+        <button class="mx-auto list-group-item list-group-item-action">
+          <%= link_to posts_path do %>
+           <div class="far fa-images fa-lg btn"></div>
+          <% end %>
+        </button>
+        <button class="mx-auto list-group-item list-group-item-action">
+          <%= link_to notifications_path do %>
+            <% if unchecked_notifications.any? %>
+              <!--通知来た時のベル-->
+              <div class="nav-link fas fa-bell fa-lg mt-1 n-circle btn "></div>
+            <% else %>
+              <div class="nav-link far fa-bell fa-lg mt-1 btn"></div>
+            <% end %>
+          <% end %>
+        </button>
+        <button class="mx-auto list-group-item list-group-item-action">
+          <%= link_to user_path(current_user) do %>
+            <div class="far fa-user fa-lg btn"></div>
+          <% end %>
+        </button>
+        <button class="mx-auto list-group-item list-group-item-action">
+          <%= link_to chats_path do %>
+            <div class="far fa-comments fa-lg btn"></div>
+          <% end %>
+        </button>
+      </ul>
+    <% end %>
 
     <footer>
-      <nav class="navbar navbar-dark bg-dark p-5">
+
+      <nav class="navbar navbar-dark bg-dark p-5 footer">
         <span class="navbar-text m-auto">
           ©︎misamisaportfolio
         </span>
