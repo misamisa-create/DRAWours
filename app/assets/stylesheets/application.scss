@@ -155,6 +155,10 @@
     border-radius: 0.5em;
     margin-left: 0.3em;
   }
+  // アイコンの色要検討
+    .icon-color{
+    color: lightgray;
+  }
 
 
   @media screen and (max-width:768px) {
@@ -187,6 +191,16 @@
     .original-text{
       font-size: 10px;
     }
-
-
+    // footerを見えなくする
+    footer{
+      display: none;
+    }
+    .top-nav{
+      display: none;
+    }
+  }
+  @media screen and (min-width:768px) {
+    .bottom-nav{
+      display: none;
+    }
   }
