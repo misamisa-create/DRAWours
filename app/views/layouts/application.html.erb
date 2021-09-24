@@ -52,7 +52,14 @@
               </li>
               <!--通知アイコン-->
               <li class="nav-item m-1 top-nav">
-                <%= render 'partial/circle' %>
+                <%= link_to notifications_path do %>
+                  <% if unchecked_notifications.any? %>
+                    <!--通知来た時のベル-->
+                    <div class="nav-link fas fa-bell fa-lg mt-1 n-circle"></div>
+                  <% else %>
+                    <div class="nav-link far fa-bell fa-lg mt-1"></div>
+                  <% end %>
+                <% end %>
               </li>
                 <!--お問い合わせ-->
               <li class="nav-item m-1">
@@ -91,8 +98,10 @@
     </header>
 
     <%= render partial: 'layouts/flash' %>
-
-    <%= yield %>
+    <!--レスポンシブの際SCSSで少しpaddingをつける-->
+    <div class="main-contents">
+      <%= yield %>
+    </div>
     <!--端末で表示されるメニューバー-->
     <% if user_signed_in? %>
       <ul class="w-100 shadow-lg list-unstyled list-group list-group-horizontal text-center bottom-nav fixed-bottom">
@@ -125,7 +134,8 @@
     <% end %>
 
     <footer>
-      <nav class="navbar navbar-dark bg-dark p-5">
+
+      <nav class="navbar navbar-dark bg-dark p-5 footer">
         <span class="navbar-text m-auto">
           ©︎misamisaportfolio
         </span>
