@@ -15,4 +15,3 @@ array.each{|tag|
 
 
 User.create!(name: 'test',display_name: 'test', email: 'test@test', password: 'testuser', confirmed_at: Time.now)
-

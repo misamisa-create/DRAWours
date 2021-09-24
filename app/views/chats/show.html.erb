@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row m-5 w-100 mx-auto">
     <div class="col-sm-12">
-      <div class="p-2 bg-light rounded-pill mx-auto text-center mb-5"><%= @user.name %>さんとのチャット</div>
+      <div class="p-2 bg-light rounded-pill mx-auto text-center mb-5"><%= @user.display_name %>さんとのチャット</div>
 
       <div id = "chat_message">
         <%= render 'chats/index', chats: @chats %>

@@ -1,25 +1,35 @@
 <div class="container">
 <div class="row m-5">
   <div class="col-sm-12 text-center bg-secondary text-white rounded p-2 mb-3 ">チャット一覧</div>
-  <% if @user_rooms.empty? %><p class="ml-4">メッセージはありません</p><% end %>
+
+  <% if @user_rooms.empty? %><div class="col-sm-12 text-center mt-2">メッセージはありません</div><% end %>
+
   <% @user_rooms.each do |room| %>
-    <div class="col-12 mx-auto mb-3 border border-secondary rounded pt-2 px-2">
-      <div class="user border-bottom border-secondary">
-      <%= link_to chat_path(room.user) do %>
-        <span class="text-break"><%= room.user.name %></span>
-      <% end %>
+    <!--枠-->
+    <div class="col-12 mx-auto mb-3 border border-secondary rounded">
+      <!--ユーザアイコン・名前-->
+      <div class="border-bottom border-secondary">
+        <!--チャット画面へ行く-->
+        <%= link_to chat_path(room.user) do %>
+          <% if room.user.icon_image.attached? %>
+            <%= image_tag room.user.icon_image.variant(resize: "70x70"),class:"icon-image rounded-circle m-3",style:"width: 70px; height: 70px; object-fit: cover" %>
+          <% else %>
+           <%= image_tag 'img/no_image.jpg', class:"icon-image rounded-circle m-3",size: "70x70" %><br />
+          <% end %>
+          <%= room.user.display_name %>さんとのチャット
+        <% end %>
       </div>
-      <%= link_to chat_path(room.room_id), class: "text-decoration-none" do %>
-      <div class=" chat-min-heiht">
+      <!--チャットの最新内容-->
+      <div>
+        <!--roomのチャットが存在する場合-->
         <% if room.chats != [] %>
           <p class="pt-3 ml-3 mb-0 text-dark text-break"><%= room.chats.last.message %></p>
           <div class="small text-muted text-right text-break">
-
             <%= (room.chats.last).created_at.strftime("%Y/%m/%d %H:%M") %>
           </div>
         <% end %>
       </div>
-      <% end %>
+
     </div>
   <% end %>
 </div>
