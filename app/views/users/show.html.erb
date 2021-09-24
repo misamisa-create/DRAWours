@@ -61,7 +61,7 @@
     <% end %>
   </div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-    <% if @post.present? %>
+    <% if @user.favorite_posts.present? %>
       <% if @user == current_user %>
         <%= render "posts/index", posts: current_user.favorite_posts %>
       <% else %>
