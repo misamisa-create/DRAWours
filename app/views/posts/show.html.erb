@@ -40,7 +40,7 @@
               <% if @post.user.icon_image.attached? %>
                 <%= image_tag @post.user.icon_image.variant(resize: "120x120"),class:"icon-image rounded-circle ",style:"width: 120px; height: 120px; object-fit: cover" %>
               <% else %>
-               <%= image_tag 'img/no_image.jpg', class:"rounded-circle ",size: "120x120" %><br />
+               <%= image_tag 'img/no_image.jpg', class:"icon-image rounded-circle ",size: "120x120" %><br />
               <% end %>
             <% end %>
             </div>
