@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row mx-auto w-100 m-5">
     <div class="col-sm-12 text-center bg-secondary text-white rounded p-2 mb-3 ">通知</div>
-    <div class="col-sm-12 text-right">
-      <%= link_to "コメントを全て削除する", notification_path(@notifications), method: :delete ,class: "btn btn-outline-danger btn-sm" %>
-    </div>
+    <% if @notifications.exists? %>
+      <div class="col-sm-12 text-right">
+        <%= link_to "コメントを全て削除する", notification_path(@notifications), method: :delete ,class: "btn btn-outline-danger btn-sm" %>
+      </div>
+    <% end %>
 
     <% if @notifications.exists? %>
         <div class="col-sm-12 users-index">
