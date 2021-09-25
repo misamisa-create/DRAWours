@@ -3,7 +3,10 @@ class HomesController < ApplicationController
     # @posts = Post.all
     # 投稿数が多くなってきたらこれに変えたい
     # @posts = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').limit(10).pluck(:post_id))
-    @posts = Post.order("RANDOM()").limit(5)
+    # @posts = Post.order("RANDOM()").limit(5)
+
+    # rand = Rails.env.production? ? "RANDOM()" : "rand()"
+    @posts = Post.limit(5)
 
   end
 end
