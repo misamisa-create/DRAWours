@@ -57,3 +57,61 @@ $(document).on('turbolinks:load',function(){
     // 切り替わりの速さ
   }, 3000);
 });
+
+
+// スクロール時の文字
+$(function(){
+  $(window).scroll(function (){
+    $("#scrollanime").each(function(){
+      var imgPos = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll > imgPos - windowHeight + windowHeight/5){
+        $(this).addClass("fade_on");
+      } else {
+        $(this).removeClass("fade_on");
+      }
+    });
+    $("#scrollanime2").each(function(){
+      var imgPos = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll > imgPos - windowHeight + windowHeight/5){
+        $(this).addClass("fade_on");
+      } else {
+        $(this).removeClass("fade_on");
+      }
+    });
+    $("#scrollanime3").each(function(){
+      var imgPos = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll > imgPos - windowHeight + windowHeight/5){
+        $(this).addClass("fade_on");
+      } else {
+        $(this).removeClass("fade_on");
+      }
+    });
+    $("#scrollanime4").each(function(){
+      var imgPos = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll > imgPos - windowHeight + windowHeight/5){
+        $(this).addClass("fade_on");
+      } else {
+        $(this).removeClass("fade_on");
+      }
+    });
+    $("#scrollanime5").each(function(){
+      var imgPos = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll > imgPos - windowHeight + windowHeight/5){
+        $(this).addClass("fade_on");
+      } else {
+        $(this).removeClass("fade_on");
+      }
+    });
+  });
+});
+

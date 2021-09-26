@@ -11,10 +11,49 @@
   <% end %>
   </div>
   <!--top-textはCSSで定義-->
+  <!--<div class="top-text text-center text-white mx-auto" style="width: 85%; ">-->
+  <!--  <section id="scrollanime" class="fade_off">-->
+  <!--    <p class="mt-5 mb-1" style="height:200px; font-size: 2em;">表現者のためのSNSを。</p>-->
+  <!--    <p class="mt-5 mb-1">DRAWours［ドロワーズ］は、誰でも簡単に自分の作品を投稿できるSNSです。</p>-->
+
+  <!--    <p class="mb-5" style="height:200px;">-->
+  <!--      イラスト・絵画・立体・写真などの、制作をしている方用のSNSです。<br />-->
+  <!--      制作していない方も閲覧用として使用可能です。 <br />-->
+  <!--    </p>-->
+  <!--    <p class="mb-5" style="height:200px;">-->
+  <!--      投稿内容にキャプション(作品タイトル・作品技法・支持体)を書く欄が設けられているので、<br />-->
+  <!--      展示会にきた時のように、相手の作品を鑑賞し、<br />-->
+  <!--      制作者も自分のイラストの魅力を伝えられる場にしたいと思っています。<br />-->
+  <!--    </p>-->
+  <!--    <p class="mb-5" style="height:200px;">-->
+  <!--      また、手軽に会話できるチャット機能を設けることで、<br />-->
+  <!--      制作者間での情報交換を行える場にします。<br />-->
+  <!--    </p>-->
+  <!--  </section>-->
+  <!--</div>-->
+
   <div class="top-text text-center text-white mx-auto" style="width: 85%; ">
-    <div style="font-size: 2em;">表現者のためのSNSを。</div>
-    <div class="mt-5 mb-1">DRAWours［ドロワーズ］は、誰でも簡単に自分の作品を投稿できるSNSです。</div>
-    <div class="mb-5">使用にはアカウント作成が必要です。</div>
+    <!--<section id="scrollanime" class="fade_off">-->
+      <section id="scrollanime" class="fade_off mt-5 mb-1" style="height:400px; "><p class="border-top border-bottom" style="font-size: 3em;">表現者のためのSNSを。</p></section>
+      <section id="scrollanime2" class="fade_off mt-5 mb-5" style="height:300px;">
+        DRAWours［ドロワーズ］は、誰でも簡単に自分の作品を投稿できるSNSです。<br />
+        制作していない方も閲覧用として使用可能です。
+      </section>
+      <section id="scrollanime3" class="fade_off mb-5" style="height:300px;">
+        投稿内容にキャプション(作品タイトル・作品技法・制作期間)を書く欄が設けられているので、<br />
+        展示会にきた時のように、相手の作品を鑑賞し、<br />
+        制作者も自分のイラストの魅力を伝えられる場になっております。<br />
+        また、タグ検索などから自分の好きな作品を探し出すこともできます。<br />
+      </section>
+      <section id="scrollanime4" class="fade_off mb-5" style="height:300px;">
+        手軽に会話できるチャット機能を設けておりますので、<br />
+        制作者間での情報交換を行える場になっております。<br />
+      </section>
+      <section id="scrollanime5" class="fade_off mb-5" style="height:300px;">
+        <%= link_to "さあ、はじめよう！",new_user_registration_path, class: "btn btn-lg btn-outline-light" %>
+      </section>
+
+    <!--</section>-->
   </div>
 </div>
 
