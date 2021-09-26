@@ -18,7 +18,6 @@
 //= require jquery.jscroll.min.js
 //= require turbolinks
 //= require_tree .
-//= require jquery_ujs
 
 // 無限スクロール
 
