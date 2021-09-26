@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.all
     # N+1問題を防ぐためのincludesメソッド
     # あとでfavoriteなども追加していく
-    @posts_all = Post.includes(:user,:taggings,:comments).with_attached_image
+    @posts_all = Post.includes(:user,:taggings,:comments)
     @user = User.find(current_user.id)
     # pp @user.followings
     # フォローしているユーザーのidを取得
@@ -17,11 +17,13 @@ class PostsController < ApplicationController
     # idにしないとcurrent_userがデータごとfollow_userに入ってしまうので注意！
     follow_users_ids.push(current_user.id)
     # タイムラインの投稿を取得
-    @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC").page(params[:page]).per(5)
+    # @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC").page(params[:page]).per(5)
+    @posts = @posts_all.where(user_id: follow_users_ids).order("created_at DESC")
     # タグの一覧表示
     if params[:tag]
       # タグ付けしている投稿を取得
-      @posts = @posts_all.order("created_at DESC").tagged_with(params[:tag]).page(params[:page]).per(5)
+      @posts = @posts_all.order("created_at DESC").tagged_with(params[:tag])
+      # @posts = @posts_all.order("created_at DESC").tagged_with(params[:tag]).page(params[:page]).per(5)
     end
   end
 

@@ -15,18 +15,31 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
-//= require jquery
 //= require jquery.jscroll.min.js
 //= require turbolinks
 //= require_tree .
 //= require jquery_ujs
 
 // 無限スクロール
-$(function() {
-  $('.jscroll').jscroll;
-    contentSelector: '.post'
-    nextSelector: "span.next a"
-});
+
+// $(function() {
+//   $('.jscroll').jscroll({
+//     contentSelector: '.post',
+//     nextSelector: 'span.next a'
+//   });
+// });
+
+// $(document).on('turbolinks:load',function() {
+//   $('.jscroll').jscroll;
+//     contentSelector: '.post'
+//     nextSelector: "span.next a"
+// });
+
+// $(function() {
+//   $('.jscroll').jscroll;
+//     contentSelector: '.post'
+//     nextSelector: "span.next a"
+// });
 
 // トップページアニメーション
 $(document).on('turbolinks:load',function(){
