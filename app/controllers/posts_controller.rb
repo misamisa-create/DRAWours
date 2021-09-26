@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.all
     # N+1問題を防ぐためのincludesメソッド
     # あとでfavoriteなども追加していく
-    @posts_all = Post.includes(:user)
+    @posts_all = Post.includes(:user,:taggings,:comments).with_attached_image
     @user = User.find(current_user.id)
     # pp @user.followings
     # フォローしているユーザーのidを取得
