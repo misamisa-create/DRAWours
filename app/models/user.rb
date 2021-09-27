@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one_attached :icon_image
   has_one_attached :header_image
 
+  # :validatableを削除することでバリデーションをカスタマイズ
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -55,7 +56,7 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
+  # deviseのバリデーション
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :name, presence: true, length: { in: 1..50 }

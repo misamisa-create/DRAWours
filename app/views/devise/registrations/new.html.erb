@@ -52,6 +52,7 @@
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %>
+          <!--password_fieldからtext_fieldに変更してdeviseのバリデーションをかけれるようにする-->
           <%= f.text_field :password, autocomplete: "new-password", class:"float-right" %>
         </div>
 

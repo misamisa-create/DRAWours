@@ -1,7 +1,6 @@
 class Post < ApplicationRecord
   # タグ機能
   acts_as_taggable
-  # 一旦外部キーのnilを許可
   # activerecord導入のためのメソッド
   has_one_attached :image
 

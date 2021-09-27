@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     @all_posts = Post.all
     # 週間いいねランキング
     @week_post_like_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').limit(4).pluck(:post_id))
+    # tagの一覧表示
     @tags = ActsAsTaggableOn::Tag.all
     # N+1問題を防ぐためのincludesメソッド
     # あとでfavoriteなども追加していく
