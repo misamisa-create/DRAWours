@@ -1,7 +1,7 @@
 <% if @model == 'user' %>
   <h5 class="m-5 text-center">検索名：<%= @content %></h5>
-  <%= render 'users/index', users:@records %>
+  <%= render 'users/index', users: @records %>
 <% else @model == 'post' %>
   <h5 class="m-5 text-center">検索名：<%= @content %></h5>
-  <%= render 'posts/all', all_posts:@records %>
+  <%= render 'posts/all', all_posts: @records %>
 <% end %>

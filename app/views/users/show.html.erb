@@ -26,6 +26,7 @@
     <div class="row border-top border-bottom border-white mx-auto" style="width: 350px">
       <div class="col-sm-12 mb-3 mt-3"><%= @user.display_name %></div>
       <div class="col-sm-12 mb-3"><%= @user.introduction %></div>
+      <!--application_helperで定義したメソッドを呼び出しURLをリンク化する-->
       <div class="col-sm-12 mb-3 fas fa-paperclip"><%= text_url_to_link(h(@user.url)).html_safe %></div>
     </div>
 

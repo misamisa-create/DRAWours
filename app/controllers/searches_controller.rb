@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
     @model = params["model"]
     @method = params["method"]
     @content = params["content"]
-    # 最終的な検索結果
+    # 最終的な検索結果。searchビューでrenderで渡す
     @records = search_for(@model, @content, @method)
   end
 

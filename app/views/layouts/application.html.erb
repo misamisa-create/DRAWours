@@ -9,6 +9,7 @@
     <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--ファビコンを表示-->
     <%= favicon_link_tag('favicon.ico') %>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -104,7 +105,7 @@
     <div class="main-contents">
       <%= yield %>
     </div>
-    <!--端末で表示されるメニューバー-->
+    <!--端末で表示されるメニューバー(bottom-navで制限)-->
     <% if user_signed_in? %>
       <ul class="w-100 shadow-lg list-unstyled list-group list-group-horizontal text-center bottom-nav fixed-bottom">
         <button class="mx-auto list-group-item list-group-item-action">

@@ -1,4 +1,6 @@
 module ApplicationHelper
+  # 投稿に含まれるURLをリンク化する
+  # text_url_to_link(h(@user.url)).html_safeなでこのメソッドを呼び出せる
   require "uri"
 
   def text_url_to_link text
