@@ -3,11 +3,11 @@
     <div class="col-sm-10 mx-auto text-center">
 
       <%- if controller_name != 'sessions' %>
-        <%= link_to "Log in", new_session_path(resource_name),class:"btn btn-link" %><br />
+        <%= link_to "Log in はこちら", new_session_path(resource_name),class:"btn btn-outline-secondary mb-3" %><br />
       <% end %>
 
       <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "Sign up", new_registration_path(resource_name),class:"btn btn-link" %><br />
+        <%= link_to "Sign up はこちら", new_registration_path(resource_name),class:"btn btn-outline-secondary mb-3" %><br />
       <% end %>
 
       <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
