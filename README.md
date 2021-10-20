@@ -1,4 +1,6 @@
 # DRAWours
+<img width="1439" alt="スクリーンショット 2021-09-27 13 11 03" src="https://user-images.githubusercontent.com/83994010/138036660-9150a6ef-8a74-4425-ac0c-f8313739d43f.png">
+
 
 ## サイト概要
 イラスト・絵画・立体・写真などの、制作をしている方用のSNSです。制作していない方も閲覧用として使用可能です。
